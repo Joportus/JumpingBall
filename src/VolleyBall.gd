@@ -23,21 +23,22 @@ func _on_pisoder_body_entered(body):
 func _integrate_forces(state):
 	
 	if punto_der:
-		print("hola")
 		var xform = state.get_transform()
 		xform.origin = saca_der
 		punto_der = false
 		state.set_transform(xform)
 		set_linear_velocity(Vector2(0, 0))
 		set_angular_velocity(0) 
+		Global.score2 += 1
+		
 	if punto_izq:
-		print("hola")
 		var xform = state.get_transform()
 		xform.origin = saca_izq
 		punto_izq = false
 		state.set_transform(xform)
 		set_linear_velocity(Vector2(0, 0))
 		set_angular_velocity(0) 
+		Global.score1 += 1
 		
 	
 	
