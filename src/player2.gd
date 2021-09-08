@@ -16,10 +16,10 @@ func _physics_process(delta):
 	
 	motion.y += g
 	
-	if Input.is_action_pressed("ui_right"):
+	if Input.is_key_pressed(KEY_D):
 		motion.x = v
 	
-	elif Input.is_action_pressed("ui_left"):
+	elif Input.is_key_pressed(KEY_A):
 		motion.x = -v
 		
 
@@ -27,7 +27,7 @@ func _physics_process(delta):
 		motion.x = 0
 		
 	if is_on_floor():
-		if Input.is_action_just_pressed("ui_up"):
+		if Input.is_key_pressed(KEY_W):
 			motion.y = -jump
 
 		
@@ -36,4 +36,3 @@ func _physics_process(delta):
 	pass
 		
 		
-

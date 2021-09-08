@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/Beetle2.png-210eba5e01f45381462b7d75b73644dc.stex"
+path="res://.import/adventurer-crouch-00.png-3b8751614ee1e14272fcd8c5875e0559.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Pixel Cars/beetle/Beetle2.png"
-dest_files=[ "res://.import/Beetle2.png-210eba5e01f45381462b7d75b73644dc.stex" ]
+source_file="res://Individual Sprites/adventurer-crouch-00.png"
+dest_files=[ "res://.import/adventurer-crouch-00.png-3b8751614ee1e14272fcd8c5875e0559.stex" ]
 
 [params]
 

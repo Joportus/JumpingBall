@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/Beetle2.png-210eba5e01f45381462b7d75b73644dc.stex"
+path="res://.import/adventurer-stand-00.png-69efd0e5519ad1dd7eddf308749b39a2.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Pixel Cars/beetle/Beetle2.png"
-dest_files=[ "res://.import/Beetle2.png-210eba5e01f45381462b7d75b73644dc.stex" ]
+source_file="res://Individual Sprites/adventurer-stand-00.png"
+dest_files=[ "res://.import/adventurer-stand-00.png-69efd0e5519ad1dd7eddf308749b39a2.stex" ]
 
 [params]
 
