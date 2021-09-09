@@ -27,7 +27,7 @@ func _integrate_forces(state):
 		xform.origin = saca_der
 		punto_der = false
 		state.set_transform(xform)
-		set_linear_velocity(Vector2(0, 0))
+		set_linear_velocity(Vector2(0, -800))
 		set_angular_velocity(0) 
 		Global.score2 += 1
 		
@@ -36,7 +36,7 @@ func _integrate_forces(state):
 		xform.origin = saca_izq
 		punto_izq = false
 		state.set_transform(xform)
-		set_linear_velocity(Vector2(0, 0))
+		set_linear_velocity(Vector2(0, -800))
 		set_angular_velocity(0) 
 		Global.score1 += 1
 		
