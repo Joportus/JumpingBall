@@ -15,49 +15,49 @@
 [ext_resource path="res://scoreboard.png" type="Texture" id=13]
 [ext_resource path="res://VCR_OSD_MONO_1.001.ttf" type="DynamicFontData" id=14]
 
-[sub_resource type="CapsuleShape2D" id=1]
+[sub_resource type="DynamicFont" id=1]
+size = 40
+font_data = ExtResource( 14 )
+
+[sub_resource type="DynamicFont" id=2]
+size = 40
+font_data = ExtResource( 14 )
+
+[sub_resource type="CapsuleShape2D" id=3]
 radius = 16.8589
 height = 49.502
 
-[sub_resource type="AnimationNodeBlendSpace2D" id=2]
+[sub_resource type="AnimationNodeBlendSpace2D" id=4]
 blend_mode = 1
 
-[sub_resource type="AnimationNodeStateMachine" id=3]
-states/Idle/node = SubResource( 2 )
+[sub_resource type="AnimationNodeStateMachine" id=5]
+states/Idle/node = SubResource( 4 )
 states/Idle/position = Vector2( 239, 43 )
 
-[sub_resource type="AnimationNodeStateMachinePlayback" id=4]
+[sub_resource type="AnimationNodeStateMachinePlayback" id=6]
 
-[sub_resource type="RectangleShape2D" id=5]
+[sub_resource type="RectangleShape2D" id=7]
 extents = Vector2( 972.461, 12.6277 )
 
-[sub_resource type="RectangleShape2D" id=6]
+[sub_resource type="RectangleShape2D" id=8]
 extents = Vector2( 480, 15.0841 )
 
-[sub_resource type="CapsuleShape2D" id=7]
+[sub_resource type="CapsuleShape2D" id=9]
 radius = 31.763
 height = 232.094
 
-[sub_resource type="PhysicsMaterial" id=8]
+[sub_resource type="PhysicsMaterial" id=10]
 bounce = 0.85
 
-[sub_resource type="CircleShape2D" id=9]
+[sub_resource type="CircleShape2D" id=11]
 radius = 54.8793
 
-[sub_resource type="RectangleShape2D" id=10]
+[sub_resource type="RectangleShape2D" id=12]
 extents = Vector2( 11.1678, 554.148 )
 
-[sub_resource type="CapsuleShape2D" id=11]
+[sub_resource type="CapsuleShape2D" id=13]
 radius = 17.6019
 height = 54.6465
-
-[sub_resource type="DynamicFont" id=12]
-size = 40
-font_data = ExtResource( 14 )
-
-[sub_resource type="DynamicFont" id=13]
-size = 40
-font_data = ExtResource( 14 )
 
 [node name="World" type="Node2D"]
 script = ExtResource( 10 )
@@ -77,6 +77,30 @@ position = Vector2( 938.761, 190.705 )
 scale = Vector2( 0.420352, 0.40214 )
 texture = ExtResource( 13 )
 
+[node name="Score1" type="Label" parent="."]
+margin_left = 809.047
+margin_top = 230.03
+margin_right = 850.047
+margin_bottom = 266.03
+custom_fonts/font = SubResource( 1 )
+custom_colors/font_color = Color( 1, 0, 0, 1 )
+script = ExtResource( 11 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Score2" type="Label" parent="."]
+margin_left = 1042.52
+margin_top = 229.505
+margin_right = 1079.52
+margin_bottom = 265.505
+custom_fonts/font = SubResource( 2 )
+custom_colors/font_color = Color( 1, 0, 0, 1 )
+script = ExtResource( 12 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
 [node name="player" type="KinematicBody2D" parent="."]
 position = Vector2( 306.243, 953.316 )
 script = ExtResource( 2 )
@@ -94,7 +118,7 @@ scale = Vector2( 3.44006, 2.86143 )
 [node name="CollisionShape2D" type="CollisionShape2D" parent="player"]
 position = Vector2( 12.1036, -6.25024 )
 rotation = 1.57079
-shape = SubResource( 1 )
+shape = SubResource( 3 )
 
 [node name="Beetle" type="Sprite" parent="player"]
 position = Vector2( 12.1667, -32.8986 )
@@ -104,10 +128,10 @@ texture = ExtResource( 5 )
 [node name="AnimationPlayer" type="AnimationPlayer" parent="player"]
 
 [node name="AnimationTree" type="AnimationTree" parent="player"]
-tree_root = SubResource( 3 )
+tree_root = SubResource( 5 )
 anim_player = NodePath("../AnimationPlayer")
 active = true
-parameters/playback = SubResource( 4 )
+parameters/playback = SubResource( 6 )
 parameters/Idle/blend_position = Vector2( 0, 0 )
 
 [node name="floor" type="StaticBody2D" parent="."]
@@ -115,7 +139,7 @@ position = Vector2( 779.547, 805.854 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="floor"]
 position = Vector2( 180.203, 268.303 )
-shape = SubResource( 5 )
+shape = SubResource( 7 )
 
 [node name="Sprite" type="Sprite" parent="floor"]
 modulate = Color( 0, 0, 0, 1 )
@@ -130,7 +154,7 @@ __meta__ = {
 }
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="floor/pisoizq"]
-shape = SubResource( 6 )
+shape = SubResource( 8 )
 
 [node name="pisoder" type="Area2D" parent="floor"]
 position = Vector2( 628.453, 268.303 )
@@ -139,7 +163,7 @@ __meta__ = {
 }
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="floor/pisoder"]
-shape = SubResource( 6 )
+shape = SubResource( 8 )
 
 [node name="wall2" type="StaticBody2D" parent="."]
 position = Vector2( 741.677, -271.194 )
@@ -149,7 +173,7 @@ __meta__ = {
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="wall2"]
 position = Vector2( 180.203, 268.303 )
-shape = SubResource( 5 )
+shape = SubResource( 7 )
 
 [node name="Sprite" type="Sprite" parent="wall2"]
 modulate = Color( 0, 0, 0, 1 )
@@ -164,7 +188,7 @@ __meta__ = {
 }
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Net"]
-shape = SubResource( 7 )
+shape = SubResource( 9 )
 
 [node name="Sprite" type="Sprite" parent="Net"]
 texture = ExtResource( 6 )
@@ -173,7 +197,7 @@ texture = ExtResource( 6 )
 "pelota",
 ]]
 position = Vector2( 893.41, 87.7732 )
-physics_material_override = SubResource( 8 )
+physics_material_override = SubResource( 10 )
 gravity_scale = 4.0
 script = ExtResource( 9 )
 __meta__ = {
@@ -181,7 +205,7 @@ __meta__ = {
 }
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Ball"]
-shape = SubResource( 9 )
+shape = SubResource( 11 )
 
 [node name="Sprite" type="Sprite" parent="Ball"]
 
@@ -200,7 +224,7 @@ __meta__ = {
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="walls"]
 position = Vector2( 0, -449.346 )
-shape = SubResource( 10 )
+shape = SubResource( 12 )
 
 [node name="Sprite" type="Sprite" parent="walls"]
 modulate = Color( 0.0352941, 0.0352941, 0.0352941, 1 )
@@ -217,7 +241,7 @@ __meta__ = {
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="walls2"]
 position = Vector2( 0, -449.346 )
-shape = SubResource( 10 )
+shape = SubResource( 12 )
 
 [node name="Sprite" type="Sprite" parent="walls2"]
 modulate = Color( 0.0352941, 0.0352941, 0.0352941, 1 )
@@ -236,7 +260,7 @@ __meta__ = {
 [node name="CollisionShape2D" type="CollisionShape2D" parent="player2"]
 position = Vector2( -2.67279, -3.11816 )
 rotation = 1.57079
-shape = SubResource( 11 )
+shape = SubResource( 13 )
 
 [node name="Sprite" type="Sprite" parent="player2"]
 position = Vector2( 0, -28.2307 )
@@ -245,30 +269,6 @@ texture = ExtResource( 8 )
 
 [node name="spawn" type="Position2D" parent="."]
 position = Vector2( 960, 160 )
-
-[node name="Score1" type="Label" parent="."]
-margin_left = 809.047
-margin_top = 230.03
-margin_right = 850.047
-margin_bottom = 266.03
-custom_fonts/font = SubResource( 12 )
-custom_colors/font_color = Color( 1, 0, 0, 1 )
-script = ExtResource( 11 )
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="Score2" type="Label" parent="."]
-margin_left = 1042.52
-margin_top = 229.505
-margin_right = 1079.52
-margin_bottom = 265.505
-custom_fonts/font = SubResource( 13 )
-custom_colors/font_color = Color( 1, 0, 0, 1 )
-script = ExtResource( 12 )
-__meta__ = {
-"_edit_use_anchors_": false
-}
 
 [connection signal="body_entered" from="floor/pisoizq" to="Ball" method="_on_pisoizq_body_entered"]
 [connection signal="body_entered" from="floor/pisoder" to="Ball" method="_on_pisoder_body_entered"]
