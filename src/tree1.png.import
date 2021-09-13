@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/Beetle.png-a42450d075b296ffe66d99e54f9610d8.stex"
+path="res://.import/tree1.png-72f5f22e323f77e6028bf6967762eb42.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Pixel Cars/beetle/Beetle.png"
-dest_files=[ "res://.import/Beetle.png-a42450d075b296ffe66d99e54f9610d8.stex" ]
+source_file="res://tree1.png"
+dest_files=[ "res://.import/tree1.png-72f5f22e323f77e6028bf6967762eb42.stex" ]
 
 [params]
 

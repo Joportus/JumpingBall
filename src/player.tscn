@@ -1,0 +1,24 @@
+[gd_scene load_steps=4 format=2]
+
+[ext_resource path="res://Pixel Cars/beetle/Beetle.png" type="Texture" id=1]
+[ext_resource path="res://KinematicBody2D.gd" type="Script" id=2]
+
+[sub_resource type="CapsuleShape2D" id=1]
+radius = 16.8589
+height = 49.502
+
+[node name="player" type="KinematicBody2D"]
+script = ExtResource( 2 )
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2( 12.1036, -6.25024 )
+rotation = 1.57079
+shape = SubResource( 1 )
+
+[node name="Beetle" type="Sprite" parent="."]
+position = Vector2( 12.1667, -32.8986 )
+scale = Vector2( 1.365, 1.33172 )
+texture = ExtResource( 1 )
