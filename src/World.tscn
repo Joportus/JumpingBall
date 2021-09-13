@@ -276,5 +276,9 @@ position = Vector2( 930, 400 )
 [node name="sacaIzq" type="Position2D" parent="."]
 position = Vector2( 920, 400 )
 
+[node name="Camera2D" type="Camera2D" parent="."]
+position = Vector2( 955.02, 521.607 )
+current = true
+
 [connection signal="body_entered" from="floor/pisoizq" to="Ball" method="_on_pisoizq_body_entered"]
 [connection signal="body_entered" from="floor/pisoder" to="Ball" method="_on_pisoder_body_entered"]
