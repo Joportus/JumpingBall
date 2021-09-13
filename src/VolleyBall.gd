@@ -7,8 +7,8 @@ onready var spawn = $spawn
 var punto_izq = false
 var punto_der = false
 
-var saca_der = Vector2(930,400)
-var saca_izq = Vector2(920,400)
+onready var saca_der = get_node("../sacaDer").position
+onready var saca_izq = get_node("../sacaIzq").position
 
 
 func _on_pisoizq_body_entered(body):

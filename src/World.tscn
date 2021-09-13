@@ -64,9 +64,9 @@ script = ExtResource( 10 )
 
 [node name="TextureRect" type="TextureRect" parent="."]
 margin_left = -1.49829
-margin_top = 4.23785
+margin_top = 2.73956
 margin_right = 1918.5
-margin_bottom = 1084.24
+margin_bottom = 1082.74
 texture = ExtResource( 4 )
 __meta__ = {
 "_edit_use_anchors_": false
@@ -269,6 +269,12 @@ texture = ExtResource( 8 )
 
 [node name="spawn" type="Position2D" parent="."]
 position = Vector2( 960, 160 )
+
+[node name="sacaDer" type="Position2D" parent="."]
+position = Vector2( 930, 400 )
+
+[node name="sacaIzq" type="Position2D" parent="."]
+position = Vector2( 920, 400 )
 
 [connection signal="body_entered" from="floor/pisoizq" to="Ball" method="_on_pisoizq_body_entered"]
 [connection signal="body_entered" from="floor/pisoder" to="Ball" method="_on_pisoder_body_entered"]
