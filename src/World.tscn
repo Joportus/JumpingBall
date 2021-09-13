@@ -22,49 +22,49 @@ font_data = ExtResource( 14 )
 size = 40
 font_data = ExtResource( 14 )
 
-[sub_resource type="RectangleShape2D" id=7]
+[sub_resource type="RectangleShape2D" id=3]
 extents = Vector2( 972.461, 12.6277 )
 
-[sub_resource type="RectangleShape2D" id=8]
+[sub_resource type="RectangleShape2D" id=4]
 extents = Vector2( 480, 15.0841 )
 
-[sub_resource type="CapsuleShape2D" id=9]
+[sub_resource type="CapsuleShape2D" id=5]
 radius = 48.2036
-height = 207.339
+height = 265.159
 
-[sub_resource type="PhysicsMaterial" id=10]
+[sub_resource type="PhysicsMaterial" id=6]
 bounce = 0.85
 
-[sub_resource type="CircleShape2D" id=11]
+[sub_resource type="CircleShape2D" id=7]
 radius = 54.8793
 
-[sub_resource type="RectangleShape2D" id=12]
+[sub_resource type="RectangleShape2D" id=8]
 extents = Vector2( 11.1678, 554.148 )
 
-[sub_resource type="CapsuleShape2D" id=13]
+[sub_resource type="CapsuleShape2D" id=9]
 radius = 17.6019
 height = 54.6465
 
-[sub_resource type="DynamicFont" id=14]
+[sub_resource type="DynamicFont" id=10]
 size = 50
 outline_size = 3
 outline_color = Color( 0, 0, 0, 1 )
 font_data = ExtResource( 14 )
 
-[sub_resource type="DynamicFont" id=18]
+[sub_resource type="DynamicFont" id=11]
 size = 50
 outline_size = 3
 outline_color = Color( 0.0313726, 0.0313726, 0.0313726, 1 )
 font_data = ExtResource( 14 )
 
-[sub_resource type="Gradient" id=16]
+[sub_resource type="Gradient" id=12]
 offsets = PoolRealArray( 0, 9.91838e-39, 0.372093, 0.589147, 0.806202, 1, 1.18347e+07 )
 colors = PoolColorArray( 0.0470588, 0.905882, 0.160784, 1, 0.0588235, 0.156863, 0.972549, 1, 0.843137, 0.215686, 0.133333, 1, 0.903551, 0.587705, 0.107896, 1, 0.917647, 0.67451, 0.101961, 1, 0.917647, 0.67451, 0.101961, 1, 0.898039, 0.054902, 0.968627, 1 )
 
-[sub_resource type="GradientTexture" id=17]
-gradient = SubResource( 16 )
+[sub_resource type="GradientTexture" id=13]
+gradient = SubResource( 12 )
 
-[sub_resource type="ParticlesMaterial" id=15]
+[sub_resource type="ParticlesMaterial" id=14]
 emission_shape = 2
 emission_box_extents = Vector3( 200, 100, 0 )
 flag_disable_z = true
@@ -75,7 +75,7 @@ orbit_velocity = 0.0
 orbit_velocity_random = 0.0
 scale = 24.26
 scale_random = 0.43
-color_ramp = SubResource( 17 )
+color_ramp = SubResource( 13 )
 
 [node name="World" type="Node2D"]
 script = ExtResource( 10 )
@@ -130,7 +130,7 @@ __meta__ = {
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="floor"]
 position = Vector2( 180.203, 268.303 )
-shape = SubResource( 7 )
+shape = SubResource( 3 )
 
 [node name="Sprite" type="Sprite" parent="floor"]
 modulate = Color( 0, 0, 0, 1 )
@@ -145,7 +145,7 @@ __meta__ = {
 }
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="floor/pisoizq"]
-shape = SubResource( 8 )
+shape = SubResource( 4 )
 
 [node name="pisoder" type="Area2D" parent="floor"]
 position = Vector2( 628.453, 268.303 )
@@ -154,7 +154,7 @@ __meta__ = {
 }
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="floor/pisoder"]
-shape = SubResource( 8 )
+shape = SubResource( 4 )
 
 [node name="wall2" type="StaticBody2D" parent="."]
 position = Vector2( 741.677, -271.194 )
@@ -165,7 +165,7 @@ __meta__ = {
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="wall2"]
 position = Vector2( 180.203, 268.303 )
-shape = SubResource( 7 )
+shape = SubResource( 3 )
 
 [node name="Sprite" type="Sprite" parent="wall2"]
 modulate = Color( 0, 0, 0, 1 )
@@ -181,7 +181,8 @@ __meta__ = {
 }
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Net"]
-shape = SubResource( 9 )
+position = Vector2( 0, 26 )
+shape = SubResource( 5 )
 
 [node name="Sprite" type="Sprite" parent="Net"]
 position = Vector2( 1.58916, -16.9515 )
@@ -191,16 +192,17 @@ texture = ExtResource( 5 )
 [node name="Ball" type="RigidBody2D" parent="." groups=[
 "pelota",
 ]]
-position = Vector2( 893.41, 87.7732 )
-physics_material_override = SubResource( 10 )
+position = Vector2( 907.41, 87.7732 )
+physics_material_override = SubResource( 6 )
 gravity_scale = 4.0
 script = ExtResource( 9 )
 __meta__ = {
 "_edit_group_": true
 }
+max_points10 = 5
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Ball"]
-shape = SubResource( 11 )
+shape = SubResource( 7 )
 
 [node name="Sprite" type="Sprite" parent="Ball"]
 
@@ -217,7 +219,7 @@ __meta__ = {
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="walls"]
 position = Vector2( 0, -449.346 )
-shape = SubResource( 12 )
+shape = SubResource( 8 )
 
 [node name="Sprite" type="Sprite" parent="walls"]
 modulate = Color( 0.0352941, 0.0352941, 0.0352941, 1 )
@@ -235,7 +237,7 @@ __meta__ = {
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="walls2"]
 position = Vector2( 0, -449.346 )
-shape = SubResource( 12 )
+shape = SubResource( 8 )
 
 [node name="Sprite" type="Sprite" parent="walls2"]
 modulate = Color( 0.0352941, 0.0352941, 0.0352941, 1 )
@@ -254,7 +256,7 @@ __meta__ = {
 [node name="CollisionShape2D" type="CollisionShape2D" parent="player2"]
 position = Vector2( -2.67279, -3.11816 )
 rotation = 1.57079
-shape = SubResource( 13 )
+shape = SubResource( 9 )
 
 [node name="Sprite" type="Sprite" parent="player2"]
 position = Vector2( 0, -28.2307 )
@@ -283,7 +285,7 @@ margin_left = -212.115
 margin_top = -142.367
 margin_right = 235.885
 margin_bottom = -13.3669
-custom_fonts/normal_font = SubResource( 14 )
+custom_fonts/normal_font = SubResource( 10 )
 bbcode_enabled = true
 bbcode_text = "Jugador de la izquierda gano!"
 text = "Jugador de la izquierda gano!"
@@ -296,8 +298,8 @@ visible = false
 margin_left = 746.0
 margin_top = 396.0
 margin_right = 1259.0
-margin_bottom = 528.0
-custom_fonts/normal_font = SubResource( 18 )
+margin_bottom = 534.0
+custom_fonts/normal_font = SubResource( 11 )
 bbcode_text = "Ganó el jugador de la derecha!
 "
 text = "Ganó el jugador de la derecha!
@@ -312,7 +314,7 @@ emitting = false
 amount = 200
 lifetime = 2.0
 preprocess = 1.0
-process_material = SubResource( 15 )
+process_material = SubResource( 14 )
 
 [connection signal="body_entered" from="floor/pisoizq" to="Ball" method="_on_pisoizq_body_entered"]
 [connection signal="body_entered" from="floor/pisoder" to="Ball" method="_on_pisoder_body_entered"]
