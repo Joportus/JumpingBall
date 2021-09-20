@@ -4,6 +4,9 @@ extends RigidBody2D
 var max_speed = 1900
 var fire_speed = 1700
 onready var fireAnimation = $fuegoPelota2
+onready var explosion = get_node("../explosion")
+
+
 var punto_izq = false
 var punto_der = false
 export var max_points10 = 3
@@ -13,14 +16,19 @@ onready var saca_izq = get_node("../sacaIzq").position
 onready var animation = get_node("../Winner")
 onready var winnerIzq = get_node("../CanvasLayer/winnerIzq")
 onready var winnerDer = get_node("../CanvasLayer/winnerDer")
+onready var timer = get_node("../Timer")
 
 
 func _on_pisoizq_body_entered(body):
 	if body.is_in_group("pelota"):
+		explosion.position = self.position
+		explosion.emitting = true
 		punto_der = true
 		
 func _on_pisoder_body_entered(body):
 	if body.is_in_group("pelota"):
+		explosion.position = self.position
+		explosion.emitting = true
 		punto_izq = true
 		
 	
@@ -45,8 +53,6 @@ func _integrate_forces(state):
 		fireAnimation.emitting = false
 		
 		
-
-	
 	if punto_der:
 		var xform = state.get_transform()
 		xform.origin = saca_der
@@ -57,10 +63,12 @@ func _integrate_forces(state):
 		Global.score2 += 1
 		
 	if punto_izq:
+
 		var xform = state.get_transform()
 		xform.origin = saca_izq
 		punto_izq = false
 		state.set_transform(xform)
+		mode = RigidBody2D.MODE_RIGID
 		set_linear_velocity(Vector2(0, -800))
 		set_angular_velocity(0) 
 		Global.score1 += 1
