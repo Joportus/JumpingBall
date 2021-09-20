@@ -243,13 +243,13 @@ shape = SubResource( 7 )
 [node name="Sprite" type="Sprite" parent="Ball"]
 
 [node name="volley-ball" type="Sprite" parent="Ball/Sprite"]
-modulate = Color( 0, 1, 0.8125, 1 )
 position = Vector2( 0.155048, 2.43371 )
 scale = Vector2( 0.0712753, 0.0708853 )
 texture = ExtResource( 3 )
 
 [node name="fuegoPelota2" type="Particles2D" parent="Ball"]
 position = Vector2( -0.381592, 0.0411377 )
+emitting = false
 amount = 500
 lifetime = 0.2
 local_coords = false
