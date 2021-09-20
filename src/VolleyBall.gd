@@ -1,8 +1,9 @@
 extends RigidBody2D
 
 
-var max_speed = 1700
-
+var max_speed = 1900
+var fire_speed = 1700
+onready var fireAnimation = $fuegoPelota2
 var punto_izq = false
 var punto_der = false
 export var max_points10 = 3
@@ -31,6 +32,18 @@ func _integrate_forces(state):
 		var new_speed = get_linear_velocity().normalized()
 		new_speed *= max_speed
 		set_linear_velocity(new_speed)
+		
+	if abs(get_linear_velocity().x) > fire_speed or abs(get_linear_velocity().y) > fire_speed:
+		fireAnimation.emitting = true
+		var t = Timer.new()
+		t.set_wait_time(1.5)
+		t.set_one_shot(true)
+		self.add_child(t)
+		t.start()
+		yield(t, "timeout")
+		fireAnimation.emitting = false
+		
+		
 
 	
 	if punto_der:
