@@ -3,19 +3,19 @@
 [ext_resource path="res://Pixel Cars/Jeep.png" type="Texture" id=1]
 [ext_resource path="res://KinematicBody2D.gd" type="Script" id=2]
 
-[sub_resource type="CapsuleShape2D" id=12]
+[sub_resource type="CapsuleShape2D" id=1]
 radius = 19.2942
 height = 44.3987
 
-[sub_resource type="Gradient" id=13]
+[sub_resource type="Gradient" id=2]
 offsets = PoolRealArray( 0, 0.317829, 0.604651, 0.868217 )
 colors = PoolColorArray( 0.976471, 0.478431, 0.0196078, 1, 0.972549, 0.0313726, 0.0313726, 1, 0.996078, 0.698039, 0.0392157, 1, 0.991621, 0.754505, 0.0466453, 1 )
 
-[sub_resource type="GradientTexture" id=11]
-gradient = SubResource( 13 )
+[sub_resource type="GradientTexture" id=3]
+gradient = SubResource( 2 )
 width = 10
 
-[sub_resource type="ParticlesMaterial" id=14]
+[sub_resource type="ParticlesMaterial" id=4]
 lifetime_randomness = 0.63
 emission_shape = 1
 emission_sphere_radius = 3.0
@@ -29,7 +29,7 @@ orbit_velocity = 0.0
 orbit_velocity_random = 0.0
 linear_accel = -46.51
 scale = 3.0
-color_ramp = SubResource( 11 )
+color_ramp = SubResource( 3 )
 
 [node name="player" type="KinematicBody2D"]
 position = Vector2( 2.10225, -4.62493 )
@@ -38,7 +38,7 @@ script = ExtResource( 2 )
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2( 6.92444, -8.47667 )
 rotation = 1.57079
-shape = SubResource( 12 )
+shape = SubResource( 1 )
 
 [node name="Beetle" type="Sprite" parent="."]
 position = Vector2( 6.28043, -25.751 )
@@ -50,4 +50,4 @@ position = Vector2( -31.0735, -0.966358 )
 amount = 500
 lifetime = 0.5
 local_coords = false
-process_material = SubResource( 14 )
+process_material = SubResource( 4 )
