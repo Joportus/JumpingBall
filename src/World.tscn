@@ -138,12 +138,13 @@ colors = PoolColorArray( 0.931641, 0.0764236, 0.266843, 1, 0.986328, 0.0577927, 
 gradient = SubResource( 22 )
 
 [sub_resource type="ParticlesMaterial" id=24]
+lifetime_randomness = 1.0
 emission_shape = 2
 emission_box_extents = Vector3( 1, 1, 1 )
 flag_disable_z = true
 direction = Vector3( 0, 0, 0 )
 spread = 180.0
-gravity = Vector3( 0, 98, 0 )
+gravity = Vector3( 0, 0, 0 )
 initial_velocity = 251.81
 initial_velocity_random = 1.0
 angular_velocity = 117.21
@@ -158,9 +159,9 @@ script = ExtResource( 10 )
 
 [node name="TextureRect" type="TextureRect" parent="."]
 margin_left = 3.578
-margin_top = 1.79568
+margin_top = 2.79568
 margin_right = 1923.58
-margin_bottom = 1081.8
+margin_bottom = 1082.8
 texture = ExtResource( 4 )
 __meta__ = {
 "_edit_use_anchors_": false
@@ -413,9 +414,9 @@ preprocess = 1.0
 process_material = SubResource( 21 )
 
 [node name="explosion" type="Particles2D" parent="."]
-position = Vector2( 959.766, 196.701 )
+position = Vector2( 959.704, 200 )
 emitting = false
-amount = 1000
+amount = 1200
 one_shot = true
 local_coords = false
 process_material = SubResource( 24 )
