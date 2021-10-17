@@ -9,10 +9,20 @@ func _ready() -> void:
 	Game.connect("server_disconnected", self, "_end_game")
 	
 	for nid in Game.players.keys():
-		var player1 = Player1.instance()
-		player1.init(nid)
-		player1.global_position = $Positions.get_child(Game.players[nid]["slot"]).global_position
-		$Players.add_child(player1)
+		var slot = Game.players[nid]["slot"]
+		var new_player
+		match slot:
+			0 : 
+				new_player = Player1.instance()
+			1 : 
+				new_player = Player2.instance()
+				new_player.get_node("Sprite").scale.x = -1
+				
+		new_player.init(nid)
+		new_player.global_position = $Positions.get_child(Game.players[nid]["slot"]).global_position
+		
+		
+		$Players.add_child(new_player)
 
 func _end_game_id(id):
 	_end_game()
