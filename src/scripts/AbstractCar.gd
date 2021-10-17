@@ -37,14 +37,16 @@ func _physics_process(delta):
 	
 		
 		
-		
-	
-	motion = move_and_slide(motion, UP)
 	
 	if is_network_master():
 		rset_unreliable("puppet_position", position)
 	else:
 		position = lerp(position, puppet_position, 0.5)
+		puppet_position = position
+		
+	motion = move_and_slide(motion, UP)
+	
+	if not is_network_master():
 		puppet_position = position
 
 		
