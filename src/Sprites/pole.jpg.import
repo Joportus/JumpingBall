@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/pole.jpg-81a757341ca2252b09475376f046d3d0.stex"
+path="res://.import/pole.jpg-eda2826eea47cbd071b7124d863f8ae5.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://pole.jpg"
-dest_files=[ "res://.import/pole.jpg-81a757341ca2252b09475376f046d3d0.stex" ]
+source_file="res://Sprites/pole.jpg"
+dest_files=[ "res://.import/pole.jpg-eda2826eea47cbd071b7124d863f8ae5.stex" ]
 
 [params]
 

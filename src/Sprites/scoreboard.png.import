@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/scoreboard.png-e155ed12b064247d686611a7b5b0147d.stex"
+path="res://.import/scoreboard.png-0b70b6dc80dcc568a531decdcf8ae8cc.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://scoreboard.png"
-dest_files=[ "res://.import/scoreboard.png-e155ed12b064247d686611a7b5b0147d.stex" ]
+source_file="res://Sprites/scoreboard.png"
+dest_files=[ "res://.import/scoreboard.png-0b70b6dc80dcc568a531decdcf8ae8cc.stex" ]
 
 [params]
 

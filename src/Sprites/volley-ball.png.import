@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/simpleBall.png-d1c25bfea788685606d0a28a60709acf.stex"
+path="res://.import/volley-ball.png-ebed4220c26e0dfc73ecbc837d39d5ca.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://simpleBall.png"
-dest_files=[ "res://.import/simpleBall.png-d1c25bfea788685606d0a28a60709acf.stex" ]
+source_file="res://Sprites/volley-ball.png"
+dest_files=[ "res://.import/volley-ball.png-ebed4220c26e0dfc73ecbc837d39d5ca.stex" ]
 
 [params]
 
