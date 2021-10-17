@@ -68,7 +68,6 @@ func _integrate_forces(state):
 		xform.origin = saca_izq
 		punto_izq = false
 		state.set_transform(xform)
-		mode = RigidBody2D.MODE_RIGID
 		set_linear_velocity(Vector2(0, -800))
 		set_angular_velocity(0) 
 		Global.score1 += 1
