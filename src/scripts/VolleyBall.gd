@@ -18,8 +18,8 @@ onready var winnerIzq = get_node("../CanvasLayer/winnerIzq")
 onready var winnerDer = get_node("../CanvasLayer/winnerDer")
 onready var timer = get_node("../Timer")
 
-puppet var puppet_velocity = Vector2.ZERO
-puppet var puppet_angular_velocity = 0
+var puppet_velocity = Vector2.ZERO
+var puppet_angular_velocity = 0
 
 
 func _on_pisoizq_body_entered(body):
@@ -53,15 +53,15 @@ func _integrate_forces(state):
 			new_speed *= max_speed
 			set_linear_velocity(new_speed)
 			
-		if abs(get_linear_velocity().x) > fire_speed or abs(get_linear_velocity().y) > fire_speed:
-			fireAnimation.emitting = true
-			var t = Timer.new()
-			t.set_wait_time(1.5)
-			t.set_one_shot(true)
-			self.add_child(t)
-			t.start()
-			yield(t, "timeout")
-			fireAnimation.emitting = false
+		#if abs(get_linear_velocity().x) > fire_speed or abs(get_linear_velocity().y) > fire_speed:
+		#	fireAnimation.emitting = true
+		#	var t = Timer.new()
+		#	t.set_wait_time(1.5)
+		#	t.set_one_shot(true)
+		#	self.add_child(t)
+		#	t.start()
+		#	yield(t, "timeout")
+		#	fireAnimation.emitting = false
 			
 			
 		if punto_der:
