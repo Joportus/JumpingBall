@@ -1,4 +1,4 @@
-[gd_scene load_steps=38 format=2]
+[gd_scene load_steps=37 format=2]
 
 [ext_resource path="res://icon.png" type="Texture" id=1]
 [ext_resource path="res://player.tscn" type="PackedScene" id=2]
@@ -8,7 +8,6 @@
 [ext_resource path="res://player2.gd" type="Script" id=7]
 [ext_resource path="res://Pixel Cars/beetle/Beetle2.png" type="Texture" id=8]
 [ext_resource path="res://VolleyBall.gd" type="Script" id=9]
-[ext_resource path="res://World.gd" type="Script" id=10]
 [ext_resource path="res://Score.gd" type="Script" id=11]
 [ext_resource path="res://Score2.gd" type="Script" id=12]
 [ext_resource path="res://scoreboard.png" type="Texture" id=13]
@@ -154,8 +153,7 @@ orbit_velocity_random = 0.0
 scale = 12.62
 color_ramp = SubResource( 23 )
 
-[node name="World" type="Node2D"]
-script = ExtResource( 10 )
+[node name="Game" type="Node2D"]
 
 [node name="TextureRect" type="TextureRect" parent="."]
 margin_left = 3.578

@@ -11,12 +11,13 @@ config_version=4
 [application]
 
 config/name="Practice"
-run/main_scene="res://World.tscn"
+run/main_scene="res://scenes/Lobby.tscn"
 config/icon="res://icon.png"
 
 [autoload]
 
 Global="*res://global.gd"
+Game="*res://scripts/Game.gd"
 
 [display]
 

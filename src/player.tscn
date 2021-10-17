@@ -11,7 +11,7 @@ height = 44.3987
 offsets = PoolRealArray( 0, 0.317829, 0.604651, 0.868217 )
 colors = PoolColorArray( 0.976471, 0.478431, 0.0196078, 1, 0.972549, 0.0313726, 0.0313726, 1, 0.996078, 0.698039, 0.0392157, 1, 0.991621, 0.754505, 0.0466453, 1 )
 
-[sub_resource type="GradientTexture" id=3]
+[sub_resource type="GradientTexture" id=5]
 gradient = SubResource( 2 )
 width = 10
 
@@ -29,7 +29,7 @@ orbit_velocity = 0.0
 orbit_velocity_random = 0.0
 linear_accel = -46.51
 scale = 3.0
-color_ramp = SubResource( 3 )
+color_ramp = SubResource( 5 )
 
 [node name="player" type="KinematicBody2D"]
 position = Vector2( 2.10225, -4.62493 )
