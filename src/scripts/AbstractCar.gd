@@ -31,9 +31,6 @@ func _physics_process(delta):
 		motion = puppet_motion
 		
 	
-		
-		
-		
 	
 	motion = move_and_slide(motion, UP)
 	

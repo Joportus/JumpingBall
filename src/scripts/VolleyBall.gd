@@ -18,6 +18,9 @@ onready var winnerIzq = get_node("../CanvasLayer/winnerIzq")
 onready var winnerDer = get_node("../CanvasLayer/winnerDer")
 onready var timer = get_node("../Timer")
 
+puppet var puppet_velocity = Vector2.ZERO
+puppet var puppet_angular_velocity = 0
+
 
 func _on_pisoizq_body_entered(body):
 	if body.is_in_group("pelota"):
@@ -33,56 +36,82 @@ func _on_pisoder_body_entered(body):
 		explosion.emitting = true
 		punto_izq = true
 		
-	
+puppet func update_pos_rot(velocity, angular_velocity):
+   puppet_velocity = velocity
+   puppet_angular_velocity = angular_velocity
+		
+
 func _integrate_forces(state):
 	
+	if is_network_master():
+		
+		rpc_unreliable("update_pos_rot", get_linear_velocity(), get_angular_velocity())
 	
 
+		if abs(get_linear_velocity().x) > max_speed or abs(get_linear_velocity().y) > max_speed:
+			var new_speed = get_linear_velocity().normalized()
+			new_speed *= max_speed
+			set_linear_velocity(new_speed)
+			
+		if abs(get_linear_velocity().x) > fire_speed or abs(get_linear_velocity().y) > fire_speed:
+			fireAnimation.emitting = true
+			var t = Timer.new()
+			t.set_wait_time(1.5)
+			t.set_one_shot(true)
+			self.add_child(t)
+			t.start()
+			yield(t, "timeout")
+			fireAnimation.emitting = false
+			
+			
+		if punto_der:
+			var xform = state.get_transform()
+			xform.origin = saca_der
+			punto_der = false
+			state.set_transform(xform)
+			set_linear_velocity(Vector2(0, -800))
+			set_angular_velocity(0) 
+			Global.score2 += 1
+			
+		if punto_izq:
 
-	if abs(get_linear_velocity().x) > max_speed or abs(get_linear_velocity().y) > max_speed:
-		var new_speed = get_linear_velocity().normalized()
-		new_speed *= max_speed
-		set_linear_velocity(new_speed)
+			var xform = state.get_transform()
+			xform.origin = saca_izq
+			punto_izq = false
+			state.set_transform(xform)
+			set_linear_velocity(Vector2(0, -800))
+			set_angular_velocity(0) 
+			Global.score1 += 1
+			
+		if Global.score1 == max_points10:
+			winnerIzq.visible = true
+			animation.emitting = true
+			call_deferred("queue_free")
 		
-	if abs(get_linear_velocity().x) > fire_speed or abs(get_linear_velocity().y) > fire_speed:
-		fireAnimation.emitting = true
-		var t = Timer.new()
-		t.set_wait_time(1.5)
-		t.set_one_shot(true)
-		self.add_child(t)
-		t.start()
-		yield(t, "timeout")
-		fireAnimation.emitting = false
-		
-		
-	if punto_der:
-		var xform = state.get_transform()
-		xform.origin = saca_der
-		punto_der = false
-		state.set_transform(xform)
-		set_linear_velocity(Vector2(0, -800))
-		set_angular_velocity(0) 
-		Global.score2 += 1
-		
-	if punto_izq:
-
-		var xform = state.get_transform()
-		xform.origin = saca_izq
-		punto_izq = false
-		state.set_transform(xform)
-		set_linear_velocity(Vector2(0, -800))
-		set_angular_velocity(0) 
-		Global.score1 += 1
-		
-	if Global.score1 == max_points10:
-		winnerIzq.visible = true
-		animation.emitting = true
-		call_deferred("queue_free")
+		if Global.score2 == max_points10:
+			winnerDer.visible = true
+			animation.emitting = true
+			call_deferred("queue_free")
 	
-	if Global.score2 == max_points10:
-		winnerDer.visible = true
-		animation.emitting = true
-		call_deferred("queue_free")
+	
+	else:
+		set_linear_velocity(puppet_velocity)
+		set_angular_velocity(puppet_angular_velocity)
+		
+	if not is_network_master():
+		puppet_velocity = get_linear_velocity()
+		puppet_angular_velocity = get_angular_velocity()
+		
+		
+			
+		
+		
+		
+		
+		
+
+		
+		
 		
 		
 	
