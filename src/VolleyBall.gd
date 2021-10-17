@@ -21,13 +21,15 @@ onready var timer = get_node("../Timer")
 
 func _on_pisoizq_body_entered(body):
 	if body.is_in_group("pelota"):
-		explosion.position = self.position
+		explosion.position.x = self.position.x
+		explosion.position.y = 1050
 		explosion.emitting = true
 		punto_der = true
 		
 func _on_pisoder_body_entered(body):
 	if body.is_in_group("pelota"):
-		explosion.position = self.position
+		explosion.position.x = self.position.x
+		explosion.position.y = 1050
 		explosion.emitting = true
 		punto_izq = true
 		
