@@ -10,9 +10,12 @@ const jump = 800
 
 const g = 35
 
-puppet var puppet_motion = Vector2.ZERO
-puppet var puppet_position = Vector2.ZERO
+var puppet_motion = Vector2.ZERO
+var puppet_position = Vector2.ZERO
 
+puppet func _update_state(p_pos, p_motion):
+	puppet_motion = p_motion
+	puppet_position = p_pos
 
 
 func _physics_process(delta):
@@ -26,7 +29,7 @@ func _physics_process(delta):
 			if Input.is_action_just_pressed("Jump"):
 				motion.y = -jump
 		
-		rset("puppet_motion", motion)
+		rpc("_update_state", puppet_position, puppet_motion)#rset("puppet_motion", motion)
 	else:
 		motion = puppet_motion
 		
