@@ -90,6 +90,7 @@ func _integrate_forces(state):
 			var xform = state.get_transform()
 			xform.origin = saca_der
 			punto_der = false
+			puppet_punto_der = false
 			state.set_transform(xform)
 			set_linear_velocity(Vector2(0, -800))
 			set_angular_velocity(0) 
@@ -100,6 +101,7 @@ func _integrate_forces(state):
 			var xform = state.get_transform()
 			xform.origin = saca_izq
 			punto_izq = false
+			puppet_punto_izq = false
 			state.set_transform(xform)
 			set_linear_velocity(Vector2(0, -800))
 			set_angular_velocity(0) 
@@ -128,6 +130,7 @@ func _integrate_forces(state):
 			var xform = state.get_transform()
 			xform.origin = saca_izq
 			puppet_punto_izq = false
+			punto_izq = false
 			state.set_transform(xform)
 			set_linear_velocity(Vector2(0, -800))
 			set_angular_velocity(0) 
@@ -137,6 +140,7 @@ func _integrate_forces(state):
 			var xform = state.get_transform()
 			xform.origin = saca_der
 			punto_der = false
+			puppet_punto_der = false
 			state.set_transform(xform)
 			set_linear_velocity(Vector2(0, -800))
 			set_angular_velocity(0) 
