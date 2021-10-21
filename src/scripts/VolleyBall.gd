@@ -16,7 +16,10 @@ var puppet_punto_der = false
 var puppet_global_score1 = 0
 var puppet_global_score2 = 0
 
-var puppet_goal_animation = explosion
+var puppet_explosion_posx = 0
+var puppet_explosion_posy = 0
+var puppet_explosion_emitting = false
+
 
 export var max_points10 = 3
 
@@ -80,8 +83,10 @@ puppet func update_score(global_score1, global_score2):
 	puppet_global_score1 = global_score1
 	puppet_global_score2 = global_score2
 	
-puppet func update_goal_animation(goal_animation):
-	puppet_goal_animation = goal_animation
+puppet func update_goal_animation(explosion_posx,explosion_posy, explosion_emitting):
+	puppet_explosion_posx = explosion_posx
+	puppet_explosion_posy = explosion_posy
+	puppet_explosion_emitting = explosion_emitting
 
 	
 		
@@ -150,7 +155,7 @@ func _integrate_forces(state):
 		
 		rpc_unreliable("update_score", Global.score1, Global.score2)
 		
-		rpc_unreliable("update_goal_animation", explosion)
+		rpc_unreliable("update_goal_animation", explosion.position.x, explosion.position.y, explosion.emitting)
 	
 	
 	else:
@@ -200,9 +205,9 @@ func _integrate_forces(state):
 		#explosion.position.x = self.position.x
 		#explosion.position.y = 1050
 		#explosion.emitting = puppet_goal_animation
-		explosion.position.x = puppet_goal_animation.position.x
-		explosion.position.y = puppet_goal_animation.position.y
-		explosion.emitting = puppet_goal_animation.emitting
+		explosion.position.x = puppet_explosion_posx
+		explosion.position.y = puppet_explosion_posy
+		explosion.emitting = puppet_explosion_emitting
 		
 			
 		
