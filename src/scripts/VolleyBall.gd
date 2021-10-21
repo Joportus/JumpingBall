@@ -16,6 +16,8 @@ var puppet_punto_der = false
 var puppet_global_score1 = 0
 var puppet_global_score2 = 0
 
+var puppet_goal_animation = false
+
 export var max_points10 = 3
 
 onready var saca_der = get_node("../sacaDer").position
@@ -42,7 +44,7 @@ func _on_pisoizq_body_entered(body):
 	elif body.is_in_group("pelota") and !is_network_master():
 		explosion.position.x = self.position.x
 		explosion.position.y = 1050
-		explosion.emitting = true
+		#explosion.emitting = true
 		puppet_punto_der = true
 	
 		
@@ -57,7 +59,7 @@ func _on_pisoder_body_entered(body):
 	elif body.is_in_group("pelota") and !is_network_master():
 		explosion.position.x = self.position.x
 		explosion.position.y = 1050
-		explosion.emitting = true
+		#explosion.emitting = true
 		puppet_punto_izq = true
 		
 	
@@ -77,6 +79,9 @@ puppet func update_pos_rot(velocity, angular_velocity):
 puppet func update_score(global_score1, global_score2):
 	puppet_global_score1 = global_score1
 	puppet_global_score2 = global_score2
+	
+puppet func update_goal_animation(goal_animation):
+	puppet_goal_animation = goal_animation
 
 	
 		
@@ -144,6 +149,8 @@ func _integrate_forces(state):
 		rpc_unreliable("update_pos_rot", get_linear_velocity(), get_angular_velocity())
 		
 		rpc_unreliable("update_score", Global.score1, Global.score2)
+		
+		rpc_unreliable("update_goal_animation", explosion.emitting)
 	
 	
 	else:
@@ -188,6 +195,8 @@ func _integrate_forces(state):
 			winnerDer.visible = true
 			animation.emitting = true
 			call_deferred("queue_free")
+		
+		explosion.emitting = puppet_goal_animation
 			
 		
 		
