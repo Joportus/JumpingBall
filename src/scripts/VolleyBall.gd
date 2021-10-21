@@ -13,6 +13,9 @@ var punto_der = false
 var puppet_punto_izq = false
 var puppet_punto_der = false
 
+var puppet_global_score1 = 0
+var puppet_global_score2 = 0
+
 export var max_points10 = 3
 
 onready var saca_der = get_node("../sacaDer").position
@@ -68,8 +71,12 @@ puppet func update_point_izq(punto_izq):
 
 		
 puppet func update_pos_rot(velocity, angular_velocity):
-   puppet_velocity = velocity
-   puppet_angular_velocity = angular_velocity
+	puppet_velocity = velocity
+	puppet_angular_velocity = angular_velocity
+
+puppet func update_score(global_score1, global_score2):
+	puppet_global_score1 = global_score1
+	puppet_global_score2 = global_score2
 
 	
 		
@@ -110,6 +117,7 @@ func _integrate_forces(state):
 			set_linear_velocity(Vector2(0, -800))
 			set_angular_velocity(0) 
 			Global.score2 += 1
+		
 			
 		if punto_izq or puppet_punto_izq:
 
@@ -120,6 +128,8 @@ func _integrate_forces(state):
 			set_linear_velocity(Vector2(0, -800))
 			set_angular_velocity(0) 
 			Global.score1 += 1
+		
+	
 			
 		if Global.score1 == max_points10:
 			winnerIzq.visible = true
@@ -132,6 +142,8 @@ func _integrate_forces(state):
 			call_deferred("queue_free")
 			
 		rpc_unreliable("update_pos_rot", get_linear_velocity(), get_angular_velocity())
+		
+		rpc_unreliable("update_score", Global.score1, Global.score2)
 	
 	
 	else:
@@ -140,6 +152,11 @@ func _integrate_forces(state):
 		#punto_der = puppet_punto_der
 		#punto_izq = puppet_punto_izq
 		
+		Global.score1 = puppet_global_score1
+		Global.score2 = puppet_global_score2
+		
+		
+		
 		if punto_izq or puppet_punto_izq:
 			var xform = state.get_transform()
 			xform.origin = saca_izq
@@ -147,7 +164,6 @@ func _integrate_forces(state):
 			state.set_transform(xform)
 			set_linear_velocity(Vector2(0, -800))
 			set_angular_velocity(0) 
-			Global.score1 += 1
 			
 		if punto_der or puppet_punto_der:
 			var xform = state.get_transform()
@@ -156,7 +172,13 @@ func _integrate_forces(state):
 			state.set_transform(xform)
 			set_linear_velocity(Vector2(0, -800))
 			set_angular_velocity(0) 
-			Global.score2 += 1
+		
+		if abs(get_linear_velocity().x) > max_speed or abs(get_linear_velocity().y) > max_speed:
+			var new_speed = get_linear_velocity().normalized()
+			new_speed *= max_speed
+			set_linear_velocity(new_speed)
+			
+		
 		
 	if not is_network_master():
 		puppet_velocity = get_linear_velocity()
@@ -165,8 +187,6 @@ func _integrate_forces(state):
 		xform.origin = puppet_position
 		
 		
-		
-			
 		
 		
 		
