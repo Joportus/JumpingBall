@@ -197,7 +197,7 @@ func _integrate_forces(state):
 			call_deferred("queue_free")
 			
 			
-		explosion.position.x = self.position.x
+		#explosion.position.x = self.position.x
 		explosion.position.y = 1050
 		explosion.emitting = puppet_goal_animation
 			
