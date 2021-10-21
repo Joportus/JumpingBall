@@ -157,6 +157,7 @@ func _integrate_forces(state):
 		
 		
 		
+		
 		if punto_izq or puppet_punto_izq:
 			var xform = state.get_transform()
 			xform.origin = saca_izq
@@ -177,6 +178,16 @@ func _integrate_forces(state):
 			var new_speed = get_linear_velocity().normalized()
 			new_speed *= max_speed
 			set_linear_velocity(new_speed)
+			
+		if Global.score1 == max_points10:
+			winnerIzq.visible = true
+			animation.emitting = true
+			call_deferred("queue_free")
+		
+		if Global.score2 == max_points10:
+			winnerDer.visible = true
+			animation.emitting = true
+			call_deferred("queue_free")
 			
 		
 		
