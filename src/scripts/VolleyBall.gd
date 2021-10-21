@@ -161,8 +161,8 @@ func _integrate_forces(state):
 	if not is_network_master():
 		puppet_velocity = get_linear_velocity()
 		puppet_angular_velocity = get_angular_velocity()
-		#var xform = state.get_transform()
-		#xform.origin = puppet_position
+		var xform = state.get_transform()
+		xform.origin = puppet_position
 		
 		
 		
