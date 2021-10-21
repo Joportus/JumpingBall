@@ -150,7 +150,7 @@ func _integrate_forces(state):
 		
 		rpc_unreliable("update_score", Global.score1, Global.score2)
 		
-		rpc_unreliable("update_goal_animation", explosion.emitting)
+		rpc_unreliable("update_goal_animation", explosion)
 	
 	
 	else:
@@ -198,8 +198,12 @@ func _integrate_forces(state):
 			
 			
 		#explosion.position.x = self.position.x
-		explosion.position.y = 1050
-		explosion.emitting = puppet_goal_animation
+		#explosion.position.y = 1050
+		#explosion.emitting = puppet_goal_animation
+		explosion.position.x = puppet_goal_animation.position.x
+		explosion.position.y = puppet_goal_animation.position.y
+		explosion.emitting = puppet_goal_animation.emitting
+		
 			
 		
 		
