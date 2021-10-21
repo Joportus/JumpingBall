@@ -16,7 +16,7 @@ var puppet_punto_der = false
 var puppet_global_score1 = 0
 var puppet_global_score2 = 0
 
-var puppet_goal_animation = false
+var puppet_goal_animation = explosion
 
 export var max_points10 = 3
 
