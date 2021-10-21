@@ -248,7 +248,7 @@ position = Vector2( 959.766, 196.701 )
 physics_material_override = SubResource( 6 )
 gravity_scale = 4.0
 script = ExtResource( 2 )
-max_points10 = 5
+max_points10 = 10
 
 [node name="pelotas" type="Particles2D" parent="Ball"]
 emitting = false
