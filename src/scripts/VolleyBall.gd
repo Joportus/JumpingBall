@@ -31,18 +31,34 @@ var ball_position = position
 
 	
 func _on_pisoizq_body_entered(body):
-	if body.is_in_group("pelota"):
+	if body.is_in_group("pelota") and is_network_master():
 		explosion.position.x = self.position.x
 		explosion.position.y = 1050
 		explosion.emitting = true
 		punto_der = true
+	elif body.is_in_group("pelota") and !is_network_master():
+		explosion.position.x = self.position.x
+		explosion.position.y = 1050
+		explosion.emitting = true
+		puppet_punto_der = true
+	
+		
 		
 func _on_pisoder_body_entered(body):
-	if body.is_in_group("pelota"):
+	if body.is_in_group("pelota") and is_network_master():
 		explosion.position.x = self.position.x
 		explosion.position.y = 1050
 		explosion.emitting = true
 		punto_izq = true
+		
+	elif body.is_in_group("pelota") and !is_network_master():
+		explosion.position.x = self.position.x
+		explosion.position.y = 1050
+		explosion.emitting = true
+		puppet_punto_izq = true
+		
+	
+	
 		
 puppet func update_point_der(punto_der):
 	puppet_punto_der = punto_der
@@ -121,8 +137,8 @@ func _integrate_forces(state):
 	else:
 		set_linear_velocity(puppet_velocity)
 		set_angular_velocity(puppet_angular_velocity)
-		punto_der = puppet_punto_der
-		punto_izq = puppet_punto_izq
+		#punto_der = puppet_punto_der
+		#punto_izq = puppet_punto_izq
 		
 		if punto_izq or puppet_punto_izq:
 			var xform = state.get_transform()
