@@ -99,15 +99,6 @@ func _integrate_forces(state):
 			set_linear_velocity(Vector2(0, -800))
 			set_angular_velocity(0) 
 			
-		if Global.score1 == max_points10:
-			winnerIzq.visible = true
-			animation.emitting = true
-			call_deferred("queue_free")
-		
-		if Global.score2 == max_points10:
-			winnerDer.visible = true
-			animation.emitting = true
-			call_deferred("queue_free")
 			
 		rpc("update_pos_rot", get_linear_velocity(), get_angular_velocity())
 		
