@@ -14,7 +14,7 @@ func _ready() -> void:
 		match slot:
 			0 : 
 				new_player = Player1.instance()
-				$CanvasLayer/winnerIzq.parse_bbcode(Game.players[nid]["name"]+" ganó la partida")
+				$CanvasLayer/winnerIzq.parse_bbcode("[center]%s ganó la partida[/center]" %Game.players[nid]["name"])
 			1 : 
 				new_player = Player2.instance()
 				new_player.get_node("Sprite").scale.x = -1

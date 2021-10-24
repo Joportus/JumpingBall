@@ -249,7 +249,6 @@ physics_material_override = SubResource( 6 )
 gravity_scale = 4.0
 script = ExtResource( 2 )
 fire_speed = 1300
-max_points10 = 10
 
 [node name="pelotas" type="Particles2D" parent="Ball"]
 emitting = false
@@ -348,9 +347,9 @@ __meta__ = {
 
 [node name="winnerDer" type="RichTextLabel" parent="CanvasLayer"]
 visible = false
-margin_left = 746.0
+margin_left = 750.238
 margin_top = 396.0
-margin_right = 1259.0
+margin_right = 1263.24
 margin_bottom = 534.0
 custom_fonts/normal_font = SubResource( 16 )
 bbcode_text = "Ganó el jugador de la derecha!
