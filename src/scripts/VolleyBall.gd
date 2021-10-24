@@ -61,12 +61,24 @@ remotesync func update_point_der():
 	punto_der = true
 	Global.score2 += 1
 	explosion_position()
+	if Global.score2 == max_points10:
+		winnerDer.visible = true
+		animation.emitting = true
+		call_deferred("queue_free")
+	
+		
+		
 	
 
 remotesync func update_point_izq():
 	punto_izq = true
 	Global.score1 += 1
 	explosion_position()
+	if Global.score1 == max_points10:
+		winnerIzq.visible = true
+		winnerIzq.parse_bbcode()
+		animation.emitting = true
+		call_deferred("queue_free")
 
 		
 puppet func update_pos_rot(velocity, angular_velocity):
@@ -86,6 +98,7 @@ puppet func update_goal_animation(explosion_posx,explosion_posy, explosion_emitt
 		
 
 func _integrate_forces(state):
+	
 
 	if is_network_master():
 		
@@ -94,9 +107,6 @@ func _integrate_forces(state):
 			var new_speed = get_linear_velocity().normalized()
 			new_speed *= max_speed
 			set_linear_velocity(new_speed)
-			
-		if not fireAnimation.emitting and (get_linear_velocity().length_squared() > fire_speed*fire_speed):
-			fireAnimation.emitting = true
 			
 			
 			
@@ -171,15 +181,11 @@ func _integrate_forces(state):
 			new_speed *= max_speed
 			set_linear_velocity(new_speed)
 			
-		if Global.score1 == max_points10:
-			winnerIzq.visible = true
-			animation.emitting = true
-			call_deferred("queue_free")
 		
-		if Global.score2 == max_points10:
-			winnerDer.visible = true
-			animation.emitting = true
-			call_deferred("queue_free")
+	
+	if not fireAnimation.emitting and (get_linear_velocity().length_squared() > fire_speed*fire_speed):
+		fireAnimation.emitting = true
+	
 			
 			
 		#explosion.position.x = self.position.x

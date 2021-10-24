@@ -14,9 +14,11 @@ func _ready() -> void:
 		match slot:
 			0 : 
 				new_player = Player1.instance()
+				$CanvasLayer/winnerIzq.parse_bbcode(Game.players[nid]["name"]+" ganó la partida")
 			1 : 
 				new_player = Player2.instance()
 				new_player.get_node("Sprite").scale.x = -1
+				$CanvasLayer/winnerDer.parse_bbcode(Game.players[nid]["name"]+" ganó la partida")
 				
 		new_player.init(nid)
 		new_player.global_position = $Positions.get_child(Game.players[nid]["slot"]).global_position

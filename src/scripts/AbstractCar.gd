@@ -60,5 +60,6 @@ func init(nid):
 	var info = Game.players[nid]
 	$Name.text = info["name"]
 	name = str(nid)
+	
 
 
