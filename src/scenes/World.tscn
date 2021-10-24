@@ -323,7 +323,6 @@ position = Vector2( 920, 400 )
 [node name="Camera2D" type="Camera2D" parent="."]
 position = Vector2( 955.02, 521.607 )
 current = true
-zoom = Vector2( 2, 2 )
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
