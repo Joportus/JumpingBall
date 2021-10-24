@@ -10,12 +10,6 @@ onready var explosion = get_node("../explosion")
 remotesync var punto_izq = false
 remotesync var punto_der = false
 
-#var puppet_punto_izq = false
-#var puppet_punto_der = false
-
-#var puppet_global_score1 = 0
-#var puppet_global_score2 = 0
-
 var puppet_explosion_posx = 0
 var puppet_explosion_posy = 0
 var puppet_explosion_emitting = false
@@ -41,14 +35,11 @@ func explosion_position():
 	explosion.position.y = 1050
 	explosion.emitting = true
 	
-	
-	
 func _on_pisoizq_body_entered(body):
 
 	if body.is_in_group("pelota") and is_network_master():
 		
 		rpc('update_point_der')
-	
 	
 func _on_pisoder_body_entered(body):
 
@@ -56,7 +47,6 @@ func _on_pisoder_body_entered(body):
 		
 		rpc("update_point_izq")
 		
-
 remotesync func update_point_der():
 	punto_der = true
 	Global.score2 += 1
@@ -65,10 +55,6 @@ remotesync func update_point_der():
 		winnerDer.visible = true
 		animation.emitting = true
 		call_deferred("queue_free")
-	
-		
-		
-	
 
 remotesync func update_point_izq():
 	punto_izq = true
@@ -76,7 +62,6 @@ remotesync func update_point_izq():
 	explosion_position()
 	if Global.score1 == max_points10:
 		winnerIzq.visible = true
-		winnerIzq.parse_bbcode()
 		animation.emitting = true
 		call_deferred("queue_free")
 
@@ -85,31 +70,16 @@ puppet func update_pos_rot(velocity, angular_velocity):
 	puppet_velocity = velocity
 	puppet_angular_velocity = angular_velocity
 
-#puppet func update_score(global_score1, global_score2):
-	#puppet_global_score1 = global_score1
-	#puppet_global_score2 = global_score2
 	
-puppet func update_goal_animation(explosion_posx,explosion_posy, explosion_emitting):
-	puppet_explosion_posx = explosion_posx
-	puppet_explosion_posy = explosion_posy
-	puppet_explosion_emitting = explosion_emitting
-
-	
-		
-
 func _integrate_forces(state):
 	
 
 	if is_network_master():
 		
-		
 		if get_linear_velocity().length_squared() > max_speed*max_speed:
 			var new_speed = get_linear_velocity().normalized()
 			new_speed *= max_speed
 			set_linear_velocity(new_speed)
-			
-			
-			
 			
 		if punto_der:
 			
@@ -120,8 +90,6 @@ func _integrate_forces(state):
 			set_linear_velocity(Vector2(0, -800))
 			set_angular_velocity(0) 
 			
-		
-			
 		if punto_izq:
 
 			var xform = state.get_transform()
@@ -130,7 +98,6 @@ func _integrate_forces(state):
 			state.set_transform(xform)
 			set_linear_velocity(Vector2(0, -800))
 			set_angular_velocity(0) 
-	
 			
 		if Global.score1 == max_points10:
 			winnerIzq.visible = true
@@ -142,23 +109,14 @@ func _integrate_forces(state):
 			animation.emitting = true
 			call_deferred("queue_free")
 			
-		rpc_unreliable("update_pos_rot", get_linear_velocity(), get_angular_velocity())
+		rpc("update_pos_rot", get_linear_velocity(), get_angular_velocity())
 		
-		#rpc_unreliable("update_score", Global.score1, Global.score2)
-		
-		rpc_unreliable("update_goal_animation", explosion.position.x, explosion.position.y, explosion.emitting)
 	
 	
 	else:
 		set_linear_velocity(puppet_velocity)
 		set_angular_velocity(puppet_angular_velocity)
-		#punto_der = puppet_punto_der
-		#punto_izq = puppet_punto_izq
-		
-		#Global.score1 = puppet_global_score1
-		#Global.score2 = puppet_global_score2
-		
-		
+
 		if punto_izq:
 			var xform = state.get_transform()
 			xform.origin = saca_izq
@@ -166,7 +124,6 @@ func _integrate_forces(state):
 			state.set_transform(xform)
 			set_linear_velocity(Vector2(0, -800))
 			set_angular_velocity(0) 
-			
 			
 		if punto_der:
 			var xform = state.get_transform()
@@ -181,28 +138,11 @@ func _integrate_forces(state):
 			new_speed *= max_speed
 			set_linear_velocity(new_speed)
 			
-		
-	
 	if not fireAnimation.emitting and (get_linear_velocity().length_squared() > fire_speed*fire_speed):
 		fireAnimation.emitting = true
 	
 			
-			
-		#explosion.position.x = self.position.x
-		#explosion.position.y = 1050
-		#explosion.emitting = puppet_goal_animation
-		
-		
-	
-		#puppet_velocity = get_linear_velocity()
-		#puppet_angular_velocity = get_angular_velocity()
-		#var xform = state.get_transform()
-		#xform.origin = puppet_position
-		
-		
-		
-		
-		
+
 		
 		
 
