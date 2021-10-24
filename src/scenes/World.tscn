@@ -136,9 +136,9 @@ color_ramp = SubResource( 21 )
 script = ExtResource( 3 )
 
 [node name="TextureRect" type="TextureRect" parent="."]
-margin_left = 3.578
+margin_left = 5.578
 margin_top = 2.79568
-margin_right = 1923.58
+margin_right = 1925.58
 margin_bottom = 1082.8
 texture = ExtResource( 6 )
 __meta__ = {
@@ -175,23 +175,19 @@ __meta__ = {
 }
 
 [node name="floor" type="StaticBody2D" parent="."]
-position = Vector2( 779.547, 805.854 )
-__meta__ = {
-"_edit_lock_": true
-}
+position = Vector2( 944, 1048 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="floor"]
-position = Vector2( 180.203, 268.303 )
 shape = SubResource( 3 )
 
 [node name="Sprite" type="Sprite" parent="floor"]
 modulate = Color( 0, 0, 0, 1 )
-position = Vector2( 176.421, 261.893 )
-scale = Vector2( 29.374, 0.406857 )
+position = Vector2( 7.99998, 9.49027 )
+scale = Vector2( 30.25, 0.703428 )
 texture = ExtResource( 10 )
 
 [node name="pisoizq" type="Area2D" parent="floor"]
-position = Vector2( -331.547, 268.303 )
+position = Vector2( -472, 0 )
 __meta__ = {
 "_edit_group_": true
 }
@@ -200,7 +196,7 @@ __meta__ = {
 shape = SubResource( 4 )
 
 [node name="pisoder" type="Area2D" parent="floor"]
-position = Vector2( 628.453, 268.303 )
+position = Vector2( 488, 0 )
 __meta__ = {
 "_edit_group_": true
 }
@@ -208,28 +204,25 @@ __meta__ = {
 [node name="CollisionShape2D" type="CollisionShape2D" parent="floor/pisoder"]
 shape = SubResource( 4 )
 
-[node name="wall2" type="StaticBody2D" parent="."]
-position = Vector2( 741.677, -271.194 )
+[node name="techo" type="StaticBody2D" parent="."]
+position = Vector2( 959.704, -16 )
 __meta__ = {
-"_edit_group_": true,
-"_edit_lock_": true
+"_edit_group_": true
 }
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="wall2"]
-position = Vector2( 180.203, 268.303 )
+[node name="CollisionShape2D" type="CollisionShape2D" parent="techo"]
 shape = SubResource( 3 )
 
-[node name="Sprite" type="Sprite" parent="wall2"]
+[node name="Sprite" type="Sprite" parent="techo"]
 modulate = Color( 0, 0, 0, 1 )
-position = Vector2( 208.681, 261.098 )
-scale = Vector2( 29.874, 0.532508 )
+position = Vector2( -7.70401, 0 )
+scale = Vector2( 30.5, 0.532508 )
 texture = ExtResource( 10 )
 
 [node name="Net" type="StaticBody2D" parent="."]
-position = Vector2( 928.237, 915.81 )
+position = Vector2( 955.02, 896 )
 __meta__ = {
-"_edit_group_": true,
-"_edit_lock_": true
+"_edit_group_": true
 }
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Net"]
@@ -279,46 +272,41 @@ local_coords = false
 process_material = SubResource( 13 )
 
 [node name="walls" type="StaticBody2D" parent="."]
-position = Vector2( 0, 982.33 )
+position = Vector2( -8, 536 )
 __meta__ = {
-"_edit_group_": true,
-"_edit_lock_": true
+"_edit_group_": true
 }
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="walls"]
-position = Vector2( 0, -449.346 )
 shape = SubResource( 14 )
 
 [node name="Sprite" type="Sprite" parent="walls"]
 modulate = Color( 0.0352941, 0.0352941, 0.0352941, 1 )
 show_behind_parent = true
-position = Vector2( 0, -446.575 )
-scale = Vector2( 0.5, 16.7423 )
+position = Vector2( 0, -5.43912 )
+scale = Vector2( 0.5, 17.1939 )
 texture = ExtResource( 10 )
 
 [node name="walls2" type="StaticBody2D" parent="."]
-position = Vector2( 1911.94, 982.33 )
+position = Vector2( 1915.67, 528 )
 __meta__ = {
-"_edit_group_": true,
-"_edit_lock_": true
+"_edit_group_": true
 }
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="walls2"]
-position = Vector2( 0, -449.346 )
 shape = SubResource( 14 )
 
 [node name="Sprite" type="Sprite" parent="walls2"]
 modulate = Color( 0.0352941, 0.0352941, 0.0352941, 1 )
 show_behind_parent = true
-position = Vector2( 0.746338, -458.464 )
 scale = Vector2( 0.5, 17.1139 )
 texture = ExtResource( 10 )
 
 [node name="sacaDer" type="Position2D" parent="."]
-position = Vector2( 930, 400 )
+position = Vector2( 984, 408 )
 
 [node name="sacaIzq" type="Position2D" parent="."]
-position = Vector2( 920, 400 )
+position = Vector2( 933.817, 408 )
 
 [node name="Camera2D" type="Camera2D" parent="."]
 position = Vector2( 955.02, 521.607 )
