@@ -7,14 +7,14 @@ onready var fireAnimation = $fuegoPelota2
 onready var explosion = get_node("../explosion")
 
 
-var punto_izq = false
-var punto_der = false
+remotesync var punto_izq = false
+remotesync var punto_der = false
 
-var puppet_punto_izq = false
-var puppet_punto_der = false
+#var puppet_punto_izq = false
+#var puppet_punto_der = false
 
-var puppet_global_score1 = 0
-var puppet_global_score2 = 0
+#var puppet_global_score1 = 0
+#var puppet_global_score2 = 0
 
 var puppet_explosion_posx = 0
 var puppet_explosion_posy = 0
@@ -39,49 +39,37 @@ var ball_position = position
 
 	
 func _on_pisoizq_body_entered(body):
+	explosion.position.x = self.position.x
+	explosion.position.y = 1050
+	explosion.emitting = true
 	if body.is_in_group("pelota") and is_network_master():
-		explosion.position.x = self.position.x
-		explosion.position.y = 1050
-		explosion.emitting = true
-		punto_der = true
-	elif body.is_in_group("pelota") and !is_network_master():
-		explosion.position.x = self.position.x
-		explosion.position.y = 1050
-		#explosion.emitting = true
-		puppet_punto_der = true
+		rpc('update_point_der')
 	
-		
-		
 func _on_pisoder_body_entered(body):
+	explosion.position.x = self.position.x
+	explosion.position.y = 1050
+	explosion.emitting = true
 	if body.is_in_group("pelota") and is_network_master():
-		explosion.position.x = self.position.x
-		explosion.position.y = 1050
-		explosion.emitting = true
-		punto_izq = true
+		rpc("update_point_izq")
 		
-	elif body.is_in_group("pelota") and !is_network_master():
-		explosion.position.x = self.position.x
-		explosion.position.y = 1050
-		#explosion.emitting = true
-		puppet_punto_izq = true
-		
-	
-	
-		
-puppet func update_point_der(punto_der):
-	puppet_punto_der = punto_der
 
-puppet func update_point_izq(punto_izq):
-	puppet_punto_izq = punto_izq
+remotesync func update_point_der():
+	punto_der = true
+	Global.score2 += 1
+	
+
+remotesync func update_point_izq():
+	punto_izq = true
+	Global.score1 += 1
 
 		
 puppet func update_pos_rot(velocity, angular_velocity):
 	puppet_velocity = velocity
 	puppet_angular_velocity = angular_velocity
 
-puppet func update_score(global_score1, global_score2):
-	puppet_global_score1 = global_score1
-	puppet_global_score2 = global_score2
+#puppet func update_score(global_score1, global_score2):
+	#puppet_global_score1 = global_score1
+	#puppet_global_score2 = global_score2
 	
 puppet func update_goal_animation(explosion_posx,explosion_posy, explosion_emitting):
 	puppet_explosion_posx = explosion_posx
@@ -92,16 +80,10 @@ puppet func update_goal_animation(explosion_posx,explosion_posy, explosion_emitt
 		
 
 func _integrate_forces(state):
-	
+
 	if is_network_master():
 		
 		
-		rpc_unreliable("update_point_izq", punto_izq)
-		
-		rpc_unreliable("update_point_der", punto_der)
-		
-	
-
 		if abs(get_linear_velocity().x) > max_speed or abs(get_linear_velocity().y) > max_speed:
 			var new_speed = get_linear_velocity().normalized()
 			new_speed *= max_speed
@@ -118,7 +100,7 @@ func _integrate_forces(state):
 		#	fireAnimation.emitting = false
 			
 			
-		if punto_der or puppet_punto_der:
+		if punto_der:
 			
 			var xform = state.get_transform()
 			xform.origin = saca_der
@@ -126,10 +108,10 @@ func _integrate_forces(state):
 			state.set_transform(xform)
 			set_linear_velocity(Vector2(0, -800))
 			set_angular_velocity(0) 
-			Global.score2 += 1
+			
 		
 			
-		if punto_izq or puppet_punto_izq:
+		if punto_izq:
 
 			var xform = state.get_transform()
 			xform.origin = saca_izq
@@ -137,8 +119,6 @@ func _integrate_forces(state):
 			state.set_transform(xform)
 			set_linear_velocity(Vector2(0, -800))
 			set_angular_velocity(0) 
-			Global.score1 += 1
-		
 	
 			
 		if Global.score1 == max_points10:
@@ -153,7 +133,7 @@ func _integrate_forces(state):
 			
 		rpc_unreliable("update_pos_rot", get_linear_velocity(), get_angular_velocity())
 		
-		rpc_unreliable("update_score", Global.score1, Global.score2)
+		#rpc_unreliable("update_score", Global.score1, Global.score2)
 		
 		rpc_unreliable("update_goal_animation", explosion.position.x, explosion.position.y, explosion.emitting)
 	
@@ -164,21 +144,19 @@ func _integrate_forces(state):
 		#punto_der = puppet_punto_der
 		#punto_izq = puppet_punto_izq
 		
-		Global.score1 = puppet_global_score1
-		Global.score2 = puppet_global_score2
+		#Global.score1 = puppet_global_score1
+		#Global.score2 = puppet_global_score2
 		
 		
-		
-		
-		if punto_izq or puppet_punto_izq:
+		if punto_izq:
 			var xform = state.get_transform()
 			xform.origin = saca_izq
-			puppet_punto_izq = false
+			punto_izq = false
 			state.set_transform(xform)
 			set_linear_velocity(Vector2(0, -800))
 			set_angular_velocity(0) 
 			
-		if punto_der or puppet_punto_der:
+		if punto_der:
 			var xform = state.get_transform()
 			xform.origin = saca_der
 			punto_der = false
@@ -209,14 +187,11 @@ func _integrate_forces(state):
 		explosion.position.y = puppet_explosion_posy
 		explosion.emitting = puppet_explosion_emitting
 		
-			
-		
-		
-	if not is_network_master():
-		puppet_velocity = get_linear_velocity()
-		puppet_angular_velocity = get_angular_velocity()
-		var xform = state.get_transform()
-		xform.origin = puppet_position
+	
+		#puppet_velocity = get_linear_velocity()
+		#puppet_angular_velocity = get_angular_velocity()
+		#var xform = state.get_transform()
+		#xform.origin = puppet_position
 		
 		
 		
