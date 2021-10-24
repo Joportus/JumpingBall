@@ -248,6 +248,7 @@ position = Vector2( 959.766, 196.701 )
 physics_material_override = SubResource( 6 )
 gravity_scale = 4.0
 script = ExtResource( 2 )
+fire_speed = 1300
 max_points10 = 10
 
 [node name="pelotas" type="Particles2D" parent="Ball"]
@@ -272,7 +273,9 @@ texture = ExtResource( 9 )
 position = Vector2( -0.381592, 0.0411377 )
 emitting = false
 amount = 500
-lifetime = 0.2
+lifetime = 0.75
+one_shot = true
+explosiveness = 0.13
 local_coords = false
 process_material = SubResource( 13 )
 
@@ -369,7 +372,7 @@ process_material = SubResource( 19 )
 [node name="explosion" type="Particles2D" parent="."]
 position = Vector2( 959.704, 200 )
 emitting = false
-amount = 1200
+amount = 500
 one_shot = true
 local_coords = false
 process_material = SubResource( 22 )
