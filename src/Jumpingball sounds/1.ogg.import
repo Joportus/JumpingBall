@@ -1,0 +1,15 @@
+[remap]
+
+importer="ogg_vorbis"
+type="AudioStreamOGGVorbis"
+path="res://.import/1.ogg-8dbc16ea8818b92bcf94a7847e6e1563.oggstr"
+
+[deps]
+
+source_file="res://Jumpingball sounds/1.ogg"
+dest_files=[ "res://.import/1.ogg-8dbc16ea8818b92bcf94a7847e6e1563.oggstr" ]
+
+[params]
+
+loop=true
+loop_offset=0

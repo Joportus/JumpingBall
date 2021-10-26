@@ -5,6 +5,7 @@ export var max_speed = 1900
 export var fire_speed = 1400
 onready var fireAnimation = $fuegoPelota2
 onready var explosion = get_node("../explosion")
+onready var ball_hit = $ball_hit
 
 
 remotesync var punto_izq = false
@@ -35,6 +36,15 @@ func explosion_position():
 	explosion.position.y = 1050
 	explosion.emitting = true
 	
+
+func _on_Area2D_body_entered(body):
+	if ball_hit.playing == false:
+		ball_hit.play()
+	pass
+	
+	
+
+
 func _on_pisoizq_body_entered(body):
 
 	if body.is_in_group("pelota") and is_network_master():
@@ -135,19 +145,3 @@ func _integrate_forces(state):
 			
 
 		
-		
-
-		
-		
-		
-		
-	
-		
-	
-	
-	
-
-
-		
-
-	

@@ -1,9 +1,10 @@
-[gd_scene load_steps=33 format=2]
+[gd_scene load_steps=35 format=2]
 
 [ext_resource path="res://scripts/Score2.gd" type="Script" id=1]
 [ext_resource path="res://scripts/VolleyBall.gd" type="Script" id=2]
 [ext_resource path="res://scripts/World.gd" type="Script" id=3]
 [ext_resource path="res://scripts/Score.gd" type="Script" id=4]
+[ext_resource path="res://Jumpingball sounds/1.ogg" type="AudioStream" id=5]
 [ext_resource path="res://Sprites/background.jpg" type="Texture" id=6]
 [ext_resource path="res://Sprites/tree1.png" type="Texture" id=7]
 [ext_resource path="res://Sprites/scoreboard.png" type="Texture" id=8]
@@ -73,29 +74,32 @@ linear_accel = -46.51
 scale = 10.0
 color_ramp = SubResource( 12 )
 
-[sub_resource type="RectangleShape2D" id=14]
+[sub_resource type="CircleShape2D" id=14]
+radius = 55.2742
+
+[sub_resource type="RectangleShape2D" id=15]
 extents = Vector2( 11.1678, 554.148 )
 
-[sub_resource type="DynamicFont" id=15]
+[sub_resource type="DynamicFont" id=16]
 size = 50
 outline_size = 3
 outline_color = Color( 0, 0, 0, 1 )
 font_data = ExtResource( 12 )
 
-[sub_resource type="DynamicFont" id=16]
+[sub_resource type="DynamicFont" id=17]
 size = 50
 outline_size = 3
 outline_color = Color( 0.0313726, 0.0313726, 0.0313726, 1 )
 font_data = ExtResource( 12 )
 
-[sub_resource type="Gradient" id=17]
+[sub_resource type="Gradient" id=18]
 offsets = PoolRealArray( 0, 9.91838e-39, 0.372093, 0.589147, 0.806202, 1, 1.18347e+07 )
 colors = PoolColorArray( 0.0470588, 0.905882, 0.160784, 1, 0.0588235, 0.156863, 0.972549, 1, 0.843137, 0.215686, 0.133333, 1, 0.903551, 0.587705, 0.107896, 1, 0.917647, 0.67451, 0.101961, 1, 0.917647, 0.67451, 0.101961, 1, 0.898039, 0.054902, 0.968627, 1 )
 
-[sub_resource type="GradientTexture" id=18]
-gradient = SubResource( 17 )
+[sub_resource type="GradientTexture" id=19]
+gradient = SubResource( 18 )
 
-[sub_resource type="ParticlesMaterial" id=19]
+[sub_resource type="ParticlesMaterial" id=20]
 emission_shape = 2
 emission_box_extents = Vector3( 200, 100, 0 )
 flag_disable_z = true
@@ -106,16 +110,16 @@ orbit_velocity = 0.0
 orbit_velocity_random = 0.0
 scale = 24.26
 scale_random = 0.43
-color_ramp = SubResource( 18 )
+color_ramp = SubResource( 19 )
 
-[sub_resource type="Gradient" id=20]
+[sub_resource type="Gradient" id=21]
 offsets = PoolRealArray( 0, 0.426357, 0.635659, 1 )
 colors = PoolColorArray( 0.931641, 0.0764236, 0.266843, 1, 0.986328, 0.0577927, 0.939176, 1, 0.118664, 0.0594482, 0.951172, 1, 0.0636826, 0.927509, 0.958984, 1 )
 
-[sub_resource type="GradientTexture" id=21]
-gradient = SubResource( 20 )
+[sub_resource type="GradientTexture" id=22]
+gradient = SubResource( 21 )
 
-[sub_resource type="ParticlesMaterial" id=22]
+[sub_resource type="ParticlesMaterial" id=23]
 lifetime_randomness = 1.0
 emission_shape = 2
 emission_box_extents = Vector3( 1, 1, 1 )
@@ -130,7 +134,7 @@ angular_velocity_random = 0.44
 orbit_velocity = 0.0
 orbit_velocity_random = 0.0
 scale = 12.62
-color_ramp = SubResource( 21 )
+color_ramp = SubResource( 22 )
 
 [node name="Game" type="Node2D"]
 script = ExtResource( 3 )
@@ -271,6 +275,15 @@ explosiveness = 0.13
 local_coords = false
 process_material = SubResource( 13 )
 
+[node name="Area2D" type="Area2D" parent="Ball"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Ball/Area2D"]
+position = Vector2( 2.11877, -2.11893 )
+shape = SubResource( 14 )
+
+[node name="ball_hit" type="AudioStreamPlayer2D" parent="Ball"]
+stream = ExtResource( 5 )
+
 [node name="walls" type="StaticBody2D" parent="."]
 position = Vector2( -8, 536 )
 __meta__ = {
@@ -278,7 +291,7 @@ __meta__ = {
 }
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="walls"]
-shape = SubResource( 14 )
+shape = SubResource( 15 )
 
 [node name="Sprite" type="Sprite" parent="walls"]
 modulate = Color( 0.0352941, 0.0352941, 0.0352941, 1 )
@@ -294,7 +307,7 @@ __meta__ = {
 }
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="walls2"]
-shape = SubResource( 14 )
+shape = SubResource( 15 )
 
 [node name="Sprite" type="Sprite" parent="walls2"]
 modulate = Color( 0.0352941, 0.0352941, 0.0352941, 1 )
@@ -324,7 +337,7 @@ margin_left = -212.115
 margin_top = -142.367
 margin_right = 235.885
 margin_bottom = -13.3669
-custom_fonts/normal_font = SubResource( 15 )
+custom_fonts/normal_font = SubResource( 16 )
 bbcode_enabled = true
 bbcode_text = "Jugador de la izquierda gano!"
 text = "Jugador de la izquierda gano!"
@@ -338,7 +351,7 @@ margin_left = 750.238
 margin_top = 396.0
 margin_right = 1263.24
 margin_bottom = 534.0
-custom_fonts/normal_font = SubResource( 16 )
+custom_fonts/normal_font = SubResource( 17 )
 bbcode_text = "Ganó el jugador de la derecha!
 "
 text = "Ganó el jugador de la derecha!
@@ -353,15 +366,15 @@ emitting = false
 amount = 200
 lifetime = 2.0
 preprocess = 1.0
-process_material = SubResource( 19 )
+process_material = SubResource( 20 )
 
 [node name="explosion" type="Particles2D" parent="."]
-position = Vector2( 959.704, 200 )
+position = Vector2( 965.697, 202.997 )
 emitting = false
 amount = 500
 one_shot = true
 local_coords = false
-process_material = SubResource( 22 )
+process_material = SubResource( 23 )
 
 [node name="Timer" type="Timer" parent="."]
 one_shot = true
@@ -378,3 +391,4 @@ position = Vector2( 1429.39, 982.89 )
 
 [connection signal="body_entered" from="floor/pisoizq" to="Ball" method="_on_pisoizq_body_entered"]
 [connection signal="body_entered" from="floor/pisoder" to="Ball" method="_on_pisoder_body_entered"]
+[connection signal="body_entered" from="Ball/Area2D" to="Ball" method="_on_Area2D_body_entered"]
