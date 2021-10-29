@@ -133,6 +133,7 @@ scale = 12.62
 color_ramp = SubResource( 21 )
 
 [node name="Game" type="Node2D"]
+position = Vector2( 1, 0 )
 script = ExtResource( 3 )
 
 [node name="TextureRect" type="TextureRect" parent="."]
