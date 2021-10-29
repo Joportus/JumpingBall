@@ -133,6 +133,7 @@ scale = 12.62
 color_ramp = SubResource( 21 )
 
 [node name="Game" type="Node2D"]
+position = Vector2( 1, 0 )
 script = ExtResource( 3 )
 
 [node name="TextureRect" type="TextureRect" parent="."]
@@ -249,6 +250,7 @@ physics_material_override = SubResource( 6 )
 gravity_scale = 4.0
 script = ExtResource( 2 )
 fire_speed = 1300
+max_points10 = 5
 
 [node name="pelotas" type="Particles2D" parent="Ball"]
 emitting = false
