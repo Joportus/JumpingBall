@@ -250,6 +250,7 @@ physics_material_override = SubResource( 6 )
 gravity_scale = 4.0
 script = ExtResource( 2 )
 fire_speed = 1300
+max_points10 = 5
 
 [node name="pelotas" type="Particles2D" parent="Ball"]
 emitting = false
