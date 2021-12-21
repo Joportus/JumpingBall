@@ -127,8 +127,6 @@ text = ">
 "
 
 [node name="OptionName" type="Label" parent="CenterContainer/VBoxContainer/CenterContainer2/VBoxContainer/CenterContainer3/HBoxContainer"]
-anchor_left = 0.00352113
-anchor_right = 0.00352113
 margin_left = 39.0
 margin_right = 284.0
 margin_bottom = 107.0

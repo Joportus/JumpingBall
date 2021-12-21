@@ -1,6 +1,7 @@
 extends MarginContainer
 
 const lobby_scene = preload("res://scenes/Lobby.tscn")
+const credits_scene = preload("res://scenes/Credits.tscn")
 onready var selector_one = $CenterContainer/VBoxContainer/CenterContainer2/VBoxContainer/CenterContainer/HBoxContainer/Selector
 onready var selector_two = $CenterContainer/VBoxContainer/CenterContainer2/VBoxContainer/CenterContainer2/HBoxContainer/Selector
 onready var selector_three = $CenterContainer/VBoxContainer/CenterContainer2/VBoxContainer/CenterContainer3/HBoxContainer/Selector
@@ -35,8 +36,8 @@ func handle_selection(_current_selection):
 		get_parent().add_child(lobby_scene.instance())
 		queue_free()
 	elif _current_selection == 1:
-		print("add credits!")
-		
+		get_parent().add_child(credits_scene.instance())
+		queue_free()
 	elif _current_selection == 2:
 		get_tree().quit()
 	
