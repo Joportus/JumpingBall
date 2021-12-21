@@ -156,8 +156,8 @@ margin_left = 809.047
 margin_top = 230.03
 margin_right = 850.047
 margin_bottom = 266.03
-custom_fonts/font = SubResource( 1 )
 custom_colors/font_color = Color( 1, 0, 0, 1 )
+custom_fonts/font = SubResource( 1 )
 script = ExtResource( 4 )
 __meta__ = {
 "_edit_use_anchors_": false
@@ -168,8 +168,8 @@ margin_left = 1042.52
 margin_top = 229.505
 margin_right = 1079.52
 margin_bottom = 265.505
-custom_fonts/font = SubResource( 2 )
 custom_colors/font_color = Color( 1, 0, 0, 1 )
+custom_fonts/font = SubResource( 2 )
 script = ExtResource( 1 )
 __meta__ = {
 "_edit_use_anchors_": false
@@ -242,15 +242,12 @@ position = Vector2( 1.58916, -16.9515 )
 scale = Vector2( 9.26381, 14.2025 )
 texture = ExtResource( 7 )
 
-[node name="Ball" type="RigidBody2D" parent="." groups=[
-"pelota",
-]]
+[node name="Ball" type="RigidBody2D" parent="." groups=["pelota"]]
 position = Vector2( 959.766, 196.701 )
 physics_material_override = SubResource( 6 )
 gravity_scale = 4.0
 script = ExtResource( 2 )
 fire_speed = 1300
-max_points10 = 5
 
 [node name="pelotas" type="Particles2D" parent="Ball"]
 emitting = false
