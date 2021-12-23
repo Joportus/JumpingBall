@@ -105,6 +105,7 @@ func _check_players_ready():
 			break
 	if all_ready:
 		get_tree().change_scene("res://scenes/World.tscn")
+		queue_free()
 
 func _cancel_pressed():
 	var nid = get_tree().get_network_unique_id()
