@@ -31,6 +31,7 @@ var puppet_position = position
 var ball_position = position
 
 var Fire = load("res://Sounds/fuego3c.wav")
+var Celebration = load("res://Sounds/Publico_vitoriando.mp3")
 
 func explosion_position():
 	explosion.position.x = self.position.x
@@ -135,7 +136,7 @@ func _integrate_forces(state):
 		fireAnimation.emitting = true
 		var sonido = AudioStreamPlayer.new()
 		sonido.stream = Fire
-		sonido.volume_db = -30
+		sonido.volume_db = 0
 		sonido.play()
 		add_child(sonido)		
 	
