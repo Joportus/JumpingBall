@@ -13,8 +13,6 @@ const g = 35
 puppet var puppet_motion = Vector2.ZERO
 puppet var puppet_position = Vector2.ZERO
 
-Jump1 = load("res://Sounds/jump1.wav")
-Jump2 = load("res://Sounds/jump2.wav")
 
 
 func _physics_process(delta):
@@ -30,11 +28,6 @@ func _physics_process(delta):
 		if is_on_floor():
 			if Input.is_action_just_pressed("Jump"):
 				motion.y = -jump
-				var sound_jump = AudioStreamPlayer.new()
-				sound_jump.stream = Jump2
-				sound_jump.volume_db = 100
-				sound_jump.play()
-				add_child(sound_jump)
 				
 		
 		rset("puppet_motion", motion)

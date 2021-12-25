@@ -1,0 +1,21 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/Publico_vitoriando.wav-3356ac622e20ee6abfff4ea396fc5a94.sample"
+
+[deps]
+
+source_file="res://Sounds/Publico_vitoriando.wav"
+dest_files=[ "res://.import/Publico_vitoriando.wav-3356ac622e20ee6abfff4ea396fc5a94.sample" ]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop=false
+compress/mode=0

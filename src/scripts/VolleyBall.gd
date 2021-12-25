@@ -31,12 +31,43 @@ var puppet_position = position
 var ball_position = position
 
 var Fire = load("res://Sounds/fuego3c.wav")
-var Celebration = load("res://Sounds/Publico_vitoriando.mp3")
+var Celebration = load("res://Sounds/bensound-energy.mp3")
+var Gol = load("res://Sounds/logro.wav")
+var Ambiente = load("res://Sounds/bensound-energy.mp3")
 
 func explosion_position():
 	explosion.position.x = self.position.x
 	explosion.position.y = 1050
 	explosion.emitting = true
+	
+	
+func _ready():
+	
+	var General_Sound = AudioStreamPlayer.new()
+	General_Sound.stream = Ambiente
+	General_Sound.volume_db = 0
+	General_Sound.play()
+	add_child(General_Sound)	
+		
+		
+
+remotesync func _Winner_Sound():
+	if Global.score1 == max_points10:
+		var Winner_sound = AudioStreamPlayer.new()
+		Winner_sound.stream = Celebration
+		Winner_sound.volume_db = 0
+		Winner_sound.play()
+		add_child(Winner_sound)	
+		
+	if Global.score2 == max_points10:
+		var Winner_sound = AudioStreamPlayer.new()
+		Winner_sound.stream = Celebration
+		Winner_sound.volume_db = 0
+		Winner_sound.play()
+		add_child(Winner_sound)	
+	
+	
+	
 	
 func _on_pisoizq_body_entered(body):
 
@@ -54,6 +85,11 @@ remotesync func update_point_der():
 	punto_der = true
 	Global.score2 += 1
 	explosion_position()
+	var Gol_sound = AudioStreamPlayer.new()
+	Gol_sound.stream = Gol
+	Gol_sound.volume_db = 0
+	Gol_sound.play()
+	add_child(Gol_sound)		
 	if Global.score2 == max_points10:
 		winnerDer.visible = true
 		animation.emitting = true
@@ -63,6 +99,11 @@ remotesync func update_point_izq():
 	punto_izq = true
 	Global.score1 += 1
 	explosion_position()
+	var Gol_sound = AudioStreamPlayer.new()
+	Gol_sound.stream = Gol
+	Gol_sound.volume_db = 0
+	Gol_sound.play()
+	add_child(Gol_sound)		
 	if Global.score1 == max_points10:
 		winnerIzq.visible = true
 		animation.emitting = true
@@ -74,6 +115,7 @@ puppet func update_pos_rot(velocity, angular_velocity):
 	puppet_angular_velocity = angular_velocity
 
 	
+
 func _integrate_forces(state):
 	
 
