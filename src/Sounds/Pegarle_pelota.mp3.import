@@ -1,0 +1,15 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+path="res://.import/Pegarle_pelota.mp3-49cacb86f0ebdcac2296fcb918e67f1b.mp3str"
+
+[deps]
+
+source_file="res://Sounds/Pegarle_pelota.mp3"
+dest_files=[ "res://.import/Pegarle_pelota.mp3-49cacb86f0ebdcac2296fcb918e67f1b.mp3str" ]
+
+[params]
+
+loop=true
+loop_offset=0

@@ -1,0 +1,15 @@
+[remap]
+
+importer="ogg_vorbis"
+type="AudioStreamOGGVorbis"
+path="res://.import/fuego3b.ogg-582b8402406857c296748d2e8b39ce6f.oggstr"
+
+[deps]
+
+source_file="res://Sounds/fuego3b.ogg"
+dest_files=[ "res://.import/fuego3b.ogg-582b8402406857c296748d2e8b39ce6f.oggstr" ]
+
+[params]
+
+loop=true
+loop_offset=0

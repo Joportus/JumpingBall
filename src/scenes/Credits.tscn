@@ -1,7 +1,8 @@
-[gd_scene load_steps=6 format=2]
+[gd_scene load_steps=7 format=2]
 
 [ext_resource path="res://Fonts/VCR_OSD_MONO_1.001.ttf" type="DynamicFontData" id=1]
 [ext_resource path="res://scenes/Credits.gd" type="Script" id=2]
+[ext_resource path="res://Sounds/bensound-energy.mp3" type="AudioStream" id=3]
 
 [sub_resource type="DynamicFont" id=1]
 resource_local_to_scene = true
@@ -144,3 +145,8 @@ align = 1
 __meta__ = {
 "_edit_use_anchors_": false
 }
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 3 )
+volume_db = -26.69
+autoplay = true

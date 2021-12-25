@@ -1,7 +1,10 @@
-[gd_scene load_steps=5 format=2]
+[gd_scene load_steps=8 format=2]
 
 [ext_resource path="res://MainMenu.gd" type="Script" id=1]
 [ext_resource path="res://Fonts/VCR_OSD_MONO_1.001.ttf" type="DynamicFontData" id=2]
+[ext_resource path="res://Sprites/Title2.png" type="Texture" id=3]
+[ext_resource path="res://Sprites/Title.png" type="Texture" id=4]
+[ext_resource path="res://Sounds/bensound-jazzyfrenchy (1).mp3" type="AudioStream" id=5]
 
 [sub_resource type="DynamicFont" id=1]
 size = 150
@@ -33,30 +36,31 @@ margin_right = 1920.0
 margin_bottom = 1080.0
 
 [node name="VBoxContainer" type="VBoxContainer" parent="CenterContainer"]
-margin_left = 476.0
-margin_top = 240.0
-margin_right = 1444.0
-margin_bottom = 840.0
+margin_left = 818.0
+margin_top = 373.0
+margin_right = 1102.0
+margin_bottom = 706.0
 
 [node name="CenterContainer" type="CenterContainer" parent="CenterContainer/VBoxContainer"]
-margin_right = 968.0
-margin_bottom = 267.0
+margin_right = 284.0
 
 [node name="Label" type="Label" parent="CenterContainer/VBoxContainer/CenterContainer"]
-margin_right = 968.0
-margin_bottom = 267.0
+visible = false
+margin_left = -342.0
+margin_top = -134.0
+margin_right = 626.0
+margin_bottom = 133.0
 custom_fonts/font = SubResource( 1 )
 text = "JumpingBall
 "
 
 [node name="CenterContainer2" type="CenterContainer" parent="CenterContainer/VBoxContainer"]
-margin_top = 271.0
-margin_right = 968.0
-margin_bottom = 600.0
+margin_top = 4.0
+margin_right = 284.0
+margin_bottom = 333.0
 
 [node name="VBoxContainer" type="VBoxContainer" parent="CenterContainer/VBoxContainer/CenterContainer2"]
-margin_left = 342.0
-margin_right = 626.0
+margin_right = 284.0
 margin_bottom = 329.0
 
 [node name="CenterContainer" type="CenterContainer" parent="CenterContainer/VBoxContainer/CenterContainer2/VBoxContainer"]
@@ -134,3 +138,17 @@ rect_min_size = Vector2( 245, 0 )
 custom_fonts/font = SubResource( 2 )
 text = "Exit
 "
+
+[node name="Sprite" type="Sprite" parent="CenterContainer"]
+visible = false
+position = Vector2( 939, 215 )
+texture = ExtResource( 4 )
+
+[node name="Sprite2" type="Sprite" parent="CenterContainer"]
+position = Vector2( 962, 213 )
+texture = ExtResource( 3 )
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 5 )
+volume_db = -27.341
+autoplay = true

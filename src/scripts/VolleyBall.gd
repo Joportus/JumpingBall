@@ -30,6 +30,8 @@ var puppet_angular_velocity = 0
 var puppet_position = position
 var ball_position = position
 
+var Fire = load("res://Sounds/fuego3c.wav")
+
 func explosion_position():
 	explosion.position.x = self.position.x
 	explosion.position.y = 1050
@@ -131,6 +133,11 @@ func _integrate_forces(state):
 			
 	if not fireAnimation.emitting and (get_linear_velocity().length_squared() > fire_speed*fire_speed):
 		fireAnimation.emitting = true
+		var sonido = AudioStreamPlayer.new()
+		sonido.stream = Fire
+		sonido.volume_db = -30
+		sonido.play()
+		add_child(sonido)		
 	
 			
 

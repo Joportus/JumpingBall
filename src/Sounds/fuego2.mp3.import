@@ -1,0 +1,15 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+path="res://.import/fuego2.mp3-9c68ad33efed7254ec00c46b12e2e312.mp3str"
+
+[deps]
+
+source_file="res://Sounds/fuego2.mp3"
+dest_files=[ "res://.import/fuego2.mp3-9c68ad33efed7254ec00c46b12e2e312.mp3str" ]
+
+[params]
+
+loop=true
+loop_offset=0

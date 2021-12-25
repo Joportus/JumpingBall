@@ -1,0 +1,15 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+path="res://.import/bensound-sunny.mp3-3730fa44414b302d985c20ef08eb8c77.mp3str"
+
+[deps]
+
+source_file="res://Sounds/bensound-sunny.mp3"
+dest_files=[ "res://.import/bensound-sunny.mp3-3730fa44414b302d985c20ef08eb8c77.mp3str" ]
+
+[params]
+
+loop=true
+loop_offset=0
