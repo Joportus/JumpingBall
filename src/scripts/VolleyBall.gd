@@ -47,7 +47,8 @@ func _ready():
 	General_Sound.stream = Ambiente
 	General_Sound.volume_db = -15
 	General_Sound.play()
-	add_child(General_Sound)	
+	add_child(General_Sound)
+	name = "Ball"
 		
 		
 
