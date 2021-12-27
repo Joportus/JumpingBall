@@ -50,7 +50,7 @@ func _process(delta):
 remotesync func _Winner_Sound():
 	var Winner_sound = AudioStreamPlayer.new()
 	Winner_sound.stream = Celebration
-	Winner_sound.volume_db = 0
+	Winner_sound.volume_db = -15
 	Winner_sound.play()
 	add_child(Winner_sound)	
 		

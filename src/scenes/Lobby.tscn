@@ -182,6 +182,7 @@ custom_styles/separator = SubResource( 1 )
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
 stream = ExtResource( 2 )
+volume_db = -15.0
 autoplay = true
 
 [node name="Label2" type="Label" parent="."]

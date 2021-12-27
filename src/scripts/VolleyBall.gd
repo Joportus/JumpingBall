@@ -45,7 +45,7 @@ func _ready():
 	
 	var General_Sound = AudioStreamPlayer.new()
 	General_Sound.stream = Ambiente
-	General_Sound.volume_db = 0
+	General_Sound.volume_db = -15
 	General_Sound.play()
 	add_child(General_Sound)	
 		
@@ -71,7 +71,7 @@ remotesync func update_point_der():
 	explosion_position()
 	var Gol_sound = AudioStreamPlayer.new()
 	Gol_sound.stream = Gol
-	Gol_sound.volume_db = 0
+	Gol_sound.volume_db = -15
 	Gol_sound.play()
 	add_child(Gol_sound)		
 	if Global.score2 == max_points10:
@@ -86,7 +86,7 @@ remotesync func update_point_izq():
 	explosion_position()
 	var Gol_sound = AudioStreamPlayer.new()
 	Gol_sound.stream = Gol
-	Gol_sound.volume_db = 0
+	Gol_sound.volume_db = -15
 	Gol_sound.play()
 	add_child(Gol_sound)		
 	if Global.score1 == max_points10:
@@ -164,7 +164,7 @@ func _integrate_forces(state):
 		fireAnimation.emitting = true
 		var sonido = AudioStreamPlayer.new()
 		sonido.stream = Fire
-		sonido.volume_db = 0
+		sonido.volume_db = -15
 		sonido.play()
 		add_child(sonido)		
 	

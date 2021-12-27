@@ -31,7 +31,7 @@ func _physics_process(delta):
 				motion.y = -jump
 				var Jump_sound = AudioStreamPlayer.new()
 				Jump_sound.stream = Jump1
-				Jump_sound.volume_db = 0
+				Jump_sound.volume_db = -15
 				Jump_sound.play()
 				add_child(Jump_sound)	
 		
