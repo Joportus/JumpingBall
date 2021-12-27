@@ -36,7 +36,7 @@ func _player_connected(id):
 	rpc_id(id, "send_info", Game.players[nid])
 
 func _process(delta):
-	if Input.is_action_just_pressed("escape"):
+	if Input.is_action_just_pressed("ui_accept"):
 		get_tree().change_scene("res://scenes/MainMenu.tscn")
 		queue_free()
 
