@@ -51,9 +51,6 @@ func _ready():
 		
 		
 
-		
-
-	
 	
 	
 func _on_pisoizq_body_entered(body):

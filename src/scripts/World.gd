@@ -5,6 +5,7 @@ var Player2 = preload("res://scenes/auto2.tscn")
 
 onready var winnerIzq = $CanvasLayer/winnerIzq
 onready var winnerDer = $CanvasLayer/winnerDer
+onready var escapeInstruct = $Label
 var Celebration = load("res://Sounds/Publico_vitoriando.mp3")
 
 var hellsound = false
@@ -34,7 +35,10 @@ func _ready() -> void:
 
 func _process(delta):
 		if winnerDer.visible or winnerIzq.visible:
+			escapeInstruct.visible = true
 			if Input.is_action_just_pressed("escape"):
+				Global.score1 = 0
+				Global.score2 = 0
 				get_tree().change_scene("res://scenes/MainMenu.tscn")
 				queue_free()
 			if hellsound == false:
