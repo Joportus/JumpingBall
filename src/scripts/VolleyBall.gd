@@ -51,21 +51,8 @@ func _ready():
 		
 		
 
-remotesync func _Winner_Sound():
-	if Global.score1 == max_points10:
-		var Winner_sound = AudioStreamPlayer.new()
-		Winner_sound.stream = Celebration
-		Winner_sound.volume_db = 0
-		Winner_sound.play()
-		add_child(Winner_sound)	
 		
-	if Global.score2 == max_points10:
-		var Winner_sound = AudioStreamPlayer.new()
-		Winner_sound.stream = Celebration
-		Winner_sound.volume_db = 0
-		Winner_sound.play()
-		add_child(Winner_sound)	
-	
+
 	
 	
 	
@@ -94,6 +81,7 @@ remotesync func update_point_der():
 		winnerDer.visible = true
 		animation.emitting = true
 		call_deferred("queue_free")
+		
 
 remotesync func update_point_izq():
 	punto_izq = true
@@ -108,8 +96,9 @@ remotesync func update_point_izq():
 		winnerIzq.visible = true
 		animation.emitting = true
 		call_deferred("queue_free")
-
 		
+			
+			
 puppet func update_pos_rot(velocity, angular_velocity):
 	puppet_velocity = velocity
 	puppet_angular_velocity = angular_velocity

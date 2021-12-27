@@ -3,6 +3,12 @@ extends Node2D
 var Player1 = preload("res://scenes/Player.tscn")
 var Player2 = preload("res://scenes/auto2.tscn")
 
+onready var winnerIzq = $CanvasLayer/winnerIzq
+onready var winnerDer = $CanvasLayer/winnerDer
+var Celebration = load("res://Sounds/Publico_vitoriando.mp3")
+
+var hellsound = false
+
 func _ready() -> void:
 	
 	Game.connect("player_disconnected", self, "_end_game_id")
@@ -14,7 +20,7 @@ func _ready() -> void:
 		match slot:
 			0 : 
 				new_player = Player1.instance()
-				$CanvasLayer/winnerIzq.parse_bbcode("[center]%s won the match[/center]" %Game.players[nid]["name"])
+				$CanvasLayer/winnerIzq.parse_bbcode("[center]%s won the match![/center]" %Game.players[nid]["name"])
 			1 : 
 				new_player = Player2.instance()
 				new_player.get_node("Sprite").scale.x = -1
@@ -25,6 +31,26 @@ func _ready() -> void:
 		
 		
 		$Players.add_child(new_player)
+
+func _process(delta):
+		if winnerDer.visible or winnerIzq.visible:
+			if Input.is_action_just_pressed("escape"):
+				get_tree().change_scene("res://scenes/MainMenu.tscn")
+				queue_free()
+			if hellsound == false:
+				_Winner_Sound()
+				hellsound = true
+
+
+
+remotesync func _Winner_Sound():
+	var Winner_sound = AudioStreamPlayer.new()
+	Winner_sound.stream = Celebration
+	Winner_sound.volume_db = 0
+	Winner_sound.play()
+	add_child(Winner_sound)	
+		
+	
 
 func _end_game_id(id):
 	_end_game()

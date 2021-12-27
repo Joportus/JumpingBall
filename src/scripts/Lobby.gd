@@ -35,6 +35,11 @@ func _player_connected(id):
 	var nid = get_tree().get_network_unique_id()
 	rpc_id(id, "send_info", Game.players[nid])
 
+func _process(delta):
+	if Input.is_action_just_pressed("escape"):
+		get_tree().change_scene("res://scenes/MainMenu.tscn")
+		queue_free()
+
 func _player_disconnected(id):
 	_remove_player(id)
 
