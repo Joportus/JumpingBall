@@ -17,7 +17,6 @@ func init(nid):
 	$Name.text = info["name"]
 	name = str(nid)
 	get_node()
-
 func _physics_process(delta: float) -> void:
 	var target_vel
 	if is_network_master():

@@ -49,9 +49,6 @@ func _ready():
 	General_Sound.play()
 	add_child(General_Sound)
 	name = "Ball"
-		
-		
-
 	
 	
 func _on_pisoizq_body_entered(body):
@@ -93,6 +90,7 @@ remotesync func update_point_izq():
 	if Global.score1 == max_points10:
 		winnerIzq.visible = true
 		animation.emitting = true
+		name = "basura3"
 		call_deferred("queue_free")
 		
 			

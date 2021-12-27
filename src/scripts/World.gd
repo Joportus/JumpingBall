@@ -6,11 +6,17 @@ var Player2 = preload("res://scenes/auto2.tscn")
 onready var winnerIzq = $CanvasLayer/winnerIzq
 onready var winnerDer = $CanvasLayer/winnerDer
 onready var escapeInstruct = $Label
+var car1:KinematicBody2D = null
+var car2:KinematicBody2D = null
+onready var volley_ball = $Ball
+
 var Celebration = load("res://Sounds/Publico_vitoriando.mp3")
 
 var hellsound = false
 
 func _ready() -> void:
+	
+	name = "World"
 	
 	Game.connect("player_disconnected", self, "_end_game_id")
 	Game.connect("server_disconnected", self, "_end_game")
@@ -21,9 +27,11 @@ func _ready() -> void:
 		match slot:
 			0 : 
 				new_player = Player1.instance()
+				car1 = new_player
 				$CanvasLayer/winnerIzq.parse_bbcode("[center]%s won the match![/center]" %Game.players[nid]["name"])
 			1 : 
 				new_player = Player2.instance()
+				car2 = new_player
 				new_player.get_node("Sprite").scale.x = -1
 				$CanvasLayer/winnerDer.parse_bbcode(Game.players[nid]["name"]+" won the match!")
 				
@@ -34,19 +42,26 @@ func _ready() -> void:
 		$Players.add_child(new_player)
 
 func _process(delta):
-		if winnerDer.visible or winnerIzq.visible:
-			escapeInstruct.visible = true
-			if Input.is_action_just_pressed("escape"):
-				Global.score1 = 0
-				Global.score2 = 0
-				get_tree().change_scene("res://scenes/MainMenu.tscn")
-				queue_free()
-			if hellsound == false:
-				_Winner_Sound()
-				hellsound = true
+	if winnerDer.visible or winnerIzq.visible:
+		escapeInstruct.visible = true
+		if Input.is_action_just_pressed("escape"):
+			rpc("end_game")
+		if hellsound == false:
+			_Winner_Sound()
+			hellsound = true
 
-
-
+remotesync func end_game():
+	Global.score1 = 0
+	Global.score2 = 0
+	car1.name = "basura1"
+	car2.name = "basura2"
+	car1.call_deferred("queue_free")
+	car2.call_deferred("queue_free")
+	get_tree().change_scene("res://scenes/MainMenu.tscn")
+	queue_free()
+	#volley_ball.call_deferred("queue_free")
+		
+	
 remotesync func _Winner_Sound():
 	var Winner_sound = AudioStreamPlayer.new()
 	Winner_sound.stream = Celebration

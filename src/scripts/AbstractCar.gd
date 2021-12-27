@@ -29,11 +29,7 @@ func _physics_process(delta):
 		if is_on_floor():
 			if Input.is_action_just_pressed("Jump"):
 				motion.y = -jump
-				var Jump_sound = AudioStreamPlayer.new()
-				Jump_sound.stream = Jump1
-				Jump_sound.volume_db = -15
-				Jump_sound.play()
-				add_child(Jump_sound)	
+				rpc_unreliable("jump_sound")
 		
 		#rpc("_update_state", puppet_position, puppet_motion)
 		rset("puppet_motion", motion)
@@ -41,10 +37,6 @@ func _physics_process(delta):
 		motion = puppet_motion
 		position = puppet_position
 		
-	
-		
-		
-	
 	if is_network_master():
 		rset_unreliable("puppet_position", position)
 	else:
@@ -57,7 +49,8 @@ func _physics_process(delta):
 		puppet_position = position
 
 		
-		
+remotesync func jump_sound():
+	$Jump.play()
 func _ready() -> void:
 	puppet_position = position
 
